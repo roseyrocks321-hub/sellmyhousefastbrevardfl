@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Citation Bookmarklets</title>
+<style>
+  body { font-family: -apple-system, sans-serif; max-width: 800px; margin: 40px auto; padding: 20px; background: #f7fafc; }
+  h1 { color: #1a365d; }
+  .card { background: white; padding: 20px; margin: 15px 0; border-radius: 8px; box-shadow: 0 1px 4px rgba(0,0,0,0.06); }
+  .drag { display: inline-block; background: #1a365d; color: white; padding: 10px 18px; border-radius: 6px; text-decoration: none; font-weight: 600; cursor: move; }
+  .drag:hover { background: #2c5282; }
+  p { color: #4a5568; line-height: 1.6; }
+  code { background: #edf2f7; padding: 2px 6px; border-radius: 4px; font-size: 0.9rem; }
+</style>
+</head>
+<body>
+
+<h1>🔗 Citation Bookmarklets</h1>
+<p><strong>How to use:</strong> Drag each blue button to your browser's bookmarks bar. Then visit the matching site and click the bookmarklet — it auto-fills the form.</p>
+
+<div class="card">
+  <h2>Yelp Auto-Fill</h2>
+  <p>On the Yelp signup page, click this bookmarklet:</p>
+  <a class="drag" href="javascript:(function(){const d=document;q=s=>d.querySelector(s);q('input[name*=\"email\"],input[type=\"email\"],#email')&&(q('input[name*=\"email\"],input[type=\"email\"],#email').value='roseyrocks321@gmail.com');q('input[name*=\"phone\"],input[type=\"tel\"],#phone')&&(q('input[name*=\"phone\"],input[type=\"tel\"],#phone').value='321-342-2514');q('input[name*=\"website\"],input[type=\"url\"],#website')&&(q('input[name*=\"website\"],input[type=\"url\"],#website').value='https://sellmyhousefastbrevardfl.com');})();">Yelp Fill</a>
+</div>
+
+<div class="card">
+  <h2>Generic NAP Fill</h2>
+  <p>Works on most citation sites. Fills business name, phone, website, and address if fields are detected.</p>
+  <a class="drag" href="javascript:(function(){const d=document;const s=(n)=>{const el=d.querySelector('input[name*=&quot;'+n+'&quot; i],input[id*=&quot;'+n+'&quot; i],textarea[name*=&quot;'+n+'&quot; i]');if(el)el.value=({'business':'Sell My House Fast Brevard FL','name':'Sell My House Fast Brevard FL','company':'Sell My House Fast Brevard FL','phone':'321-342-2514','tel':'321-342-2514','website':'https://sellmyhousefastbrevardfl.com','url':'https://sellmyhousefastbrevardfl.com','address':'3682 N Wickham Rd','city':'Melbourne','state':'FL','zip':'32935','email':'roseyrocks321@gmail.com'})[n]||'';};Object.keys({'business':'','name':'','company':'','phone':'','tel':'','website':'','url':'','address':'','city':'','state':'','zip':'','email':''}).forEach(s);})();">NAP Fill</a>
+</div>
+
+<div class="card">
+  <h2>Description Fill</h2>
+  <p>Fills the description/bio field on any page.</p>
+  <a class="drag" href="javascript:(function(){const t='We buy houses for cash throughout Brevard County, Florida. No repairs, no fees, no waiting. Get a fair cash offer in 24 hours and close in as little as 7 days. Whether you\'re facing foreclosure, probate, inherited property, or just need to sell fast, we make it simple. Serving Melbourne, Palm Bay, Cocoa Beach, Satellite Beach, Viera, Merritt Island, Rockledge, Titusville, and all surrounding communities. Call 321-342-2514 for your no-obligation offer today.';const d=document;const el=d.querySelector('textarea[name*=&quot;description&quot; i],textarea[name*=&quot;about&quot; i],textarea[name*=&quot;bio&quot; i],textarea[name*=&quot;summary&quot; i],input[name*=&quot;description&quot; i]');if(el)el.value=t;})();">Desc Fill</a>
+</div>
+
+<p style="margin-top:30px;color:#718096;font-size:0.9rem;">
+<strong>Note:</strong> Bookmarklets don't work on every site due to security restrictions (especially iframes). The cheat sheet copy-paste method is more reliable. Use both together for maximum speed.
+</p>
+
+</body>
+</html>
