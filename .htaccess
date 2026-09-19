@@ -1,0 +1,80 @@
+RewriteEngine On
+
+# Set default content type for clean URLs
+DefaultType text/html
+
+# Disable directory indexes
+Options -Indexes
+
+# 1. Force HTTPS and Non-WWW
+RewriteCond %{HTTPS} off [OR]
+RewriteCond %{HTTP_HOST} ^www\. [NC]
+RewriteRule ^(.*)$ https://sellmyhousefastbrevardfl.com/$1 [L,R=301]
+
+# 2. Redirect /home and /index.html to the root domain
+RewriteRule ^home$ / [R=301,L]
+RewriteRule ^index\.html$ / [R=301,L]
+
+# 3. Redirect .html URLs to clean URLs (Melbourne.html -> /Melbourne)
+RewriteCond %{THE_REQUEST} \s/([^.]+)\.html\s [NC]
+RewriteRule ^ /%1 [R=301,L]
+
+# 4. Internal Rewrite: Serve the .html file behind the scenes
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}.html -f
+RewriteRule ^(.*)$ $1.html [L]
+RewriteCond %{HTTP_HOST} ^sellmyhousefastbrevardfl\.com$ [OR]
+RewriteCond %{HTTP_HOST} ^www\.sellmyhousefastbrevardfl\.com$
+RewriteRule ^site\-a\-merritt\-island\.html$ "https\:\/\/sellmyhousefastbrevardfl\.com\/sell\-my\-house\-fast\-merritt\-island" [R=301,L]
+RewriteCond %{HTTP_HOST} ^sellmyhousefastbrevardfl\.com$ [OR]
+RewriteCond %{HTTP_HOST} ^www\.sellmyhousefastbrevardfl\.com$
+RewriteRule ^site\-a\-melbourne\.html$ "https\:\/\/sellmyhousefastbrevardfl\.com\/sell\-my\-house\-fast\-melbourne" [R=301,L]
+
+# 5. Security Headers
+<IfModule mod_headers.c>
+    Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains; preload"
+    Header always set X-Frame-Options "SAMEORIGIN"
+    Header always set X-Content-Type-Options "nosniff"
+    Header always set Referrer-Policy "strict-origin-when-cross-origin"
+    Header always set Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://link.msgsndr.com https://api.leadconnectorhq.com https://stcdn.leadconnectorhq.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data: https://cdn.msgsndr.com https://assets.cdn.msgsndr.com https://cdn.filesafe.space https://assets.cdn.filesafe.space https://images.leadconnectorhq.com; font-src 'self' https://fonts.gstatic.com; connect-src 'self' https://www.google-analytics.com https://backend.leadconnectorhq.com https://apisystem.tech; frame-src 'self' https://api.leadconnectorhq.com; frame-ancestors 'self';"
+</IfModule>
+
+# 6. Explicit security headers for static files (images, etc.)
+<FilesMatch "\.(png|jpg|jpeg|gif|ico|svg|webp|pdf)$">
+    <IfModule mod_headers.c>
+        Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains; preload"
+        Header always set X-Frame-Options "SAMEORIGIN"
+        Header always set X-Content-Type-Options "nosniff"
+        Header always set Referrer-Policy "strict-origin-when-cross-origin"
+        Header always set Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://link.msgsndr.com https://api.leadconnectorhq.com https://stcdn.leadconnectorhq.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data: https://cdn.msgsndr.com https://assets.cdn.msgsndr.com https://cdn.filesafe.space https://assets.cdn.filesafe.space https://images.leadconnectorhq.com; font-src 'self' https://fonts.gstatic.com; connect-src 'self' https://www.google-analytics.com https://backend.leadconnectorhq.com https://apisystem.tech; frame-src 'self' https://api.leadconnectorhq.com; frame-ancestors 'self';"
+    </IfModule>
+</FilesMatch>
+
+# BEGIN Compression & Caching
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/plain text/xml text/css text/javascript application/javascript application/json
+</IfModule>
+
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresByType text/html "access plus 1 hour"
+  ExpiresByType text/css "access plus 1 month"
+  ExpiresByType text/javascript "access plus 1 month"
+  ExpiresByType application/javascript "access plus 1 month"
+  ExpiresByType image/jpeg "access plus 1 year"
+  ExpiresByType image/png "access plus 1 year"
+  ExpiresByType image/webp "access plus 1 year"
+  ExpiresByType image/gif "access plus 1 year"
+  ExpiresByType image/svg+xml "access plus 1 year"
+</IfModule>
+
+<IfModule mod_headers.c>
+  <FilesMatch "\.(css|js)$">
+    Header set Cache-Control "max-age=2592000, public"
+  </FilesMatch>
+  <FilesMatch "\.(png|jpg|jpeg|webp|gif|svg|ico)$">
+    Header set Cache-Control "max-age=31536000, public"
+  </FilesMatch>
+</IfModule>
+# END Compression & Caching
