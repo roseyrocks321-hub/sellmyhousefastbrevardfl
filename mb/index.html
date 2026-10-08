@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="robots" content="noindex, nofollow, noarchive">
+<title>Mission Board</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background: #0a0a0a;
+    color: #e0e0e0;
+    padding: 20px;
+    line-height: 1.5;
+  }
+  .header { margin-bottom: 20px; }
+  h1 { font-size: 26px; font-weight: 700; letter-spacing: -0.5px; }
+  .date { font-size: 13px; color: #666; margin-top: 2px; }
+
+  /* Tabs */
+  .tabs {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 24px;
+    border-bottom: 1px solid #1f1f1f;
+    padding-bottom: 12px;
+  }
+  .tab {
+    background: #141414;
+    border: 1px solid #1f1f1f;
+    border-radius: 10px;
+    padding: 10px 18px;
+    font-size: 14px;
+    font-weight: 600;
+    color: #888;
+    cursor: pointer;
+  }
+  .tab.active {
+    background: #1f1f1f;
+    color: #fff;
+    border-color: #333;
+  }
+  .tab-panel { display: none; }
+  .tab-panel.active { display: block; }
+
+  .section { margin-bottom: 28px; }
+  .section-title {
+    font-size: 12px; font-weight: 700; text-transform: uppercase;
+    letter-spacing: 1.5px; margin-bottom: 10px; padding-left: 4px;
+  }
+  .title-1 { color: #ff453a; }
+  .title-2 { color: #ff9f0a; }
+  .title-3 { color: #30d158; }
+  .task {
+    background: #141414; border-radius: 14px; padding: 16px;
+    margin-bottom: 10px; border: 1px solid #1f1f1f;
+  }
+  .task-id { font-size: 11px; font-weight: 700; color: #555; margin-bottom: 4px; }
+  .task-body { font-size: 15px; font-weight: 500; color: #f0f0f0; }
+  .task-when { font-size: 12px; color: #777; margin-top: 6px; }
+  .done { opacity: 0.5; border-left: 4px solid #30d158; }
+  .done .task-body { text-decoration: line-through; }
+  .top3 {
+    background: #1a1a1a; border-radius: 16px; padding: 20px;
+    margin-top: 32px; border: 1px solid #2a2a2a;
+  }
+  .top3-title {
+    font-size: 14px; font-weight: 700; color: #ff9f0a;
+    text-transform: uppercase; letter-spacing: 1px; margin-bottom: 14px;
+  }
+  .top3 ol { padding-left: 20px; }
+  .top3 li { font-size: 15px; font-weight: 500; margin-bottom: 12px; color: #f0f0f0; }
+  .top3 li:last-child { margin-bottom: 0; }
+
+  /* Goals */
+  .goal-category {
+    background: #141414; border-radius: 16px; padding: 18px;
+    margin-bottom: 14px; border: 1px solid #1f1f1f;
+  }
+  .goal-category-title {
+    font-size: 14px; font-weight: 700; margin-bottom: 12px;
+  }
+  .goal-health { color: #30d158; }
+  .goal-family { color: #64d2ff; }
+  .goal-income { color: #ff9f0a; }
+  .goal-list { list-style: none; }
+  .goal-list li {
+    font-size: 15px; font-weight: 500;
+    padding: 10px 0; border-bottom: 1px solid #1f1f1f;
+    display: flex; align-items: flex-start; gap: 10px;
+  }
+  .goal-list li:last-child { border-bottom: none; }
+  .goal-checkbox {
+    width: 18px; height: 18px; border-radius: 5px;
+    border: 2px solid #444; flex-shrink: 0; margin-top: 2px;
+  }
+  /* Schedule tab */
+  .sched-day {
+    background: #141414; border-radius: 14px; padding: 16px;
+    margin-bottom: 12px; border: 1px solid #1f1f1f;
+  }
+  .sched-day-title {
+    font-size: 14px; font-weight: 700; margin-bottom: 10px;
+    display: flex; align-items: center; gap: 8px;
+  }
+  .sched-early { color: #ff9f0a; }
+  .sched-normal { color: #64d2ff; }
+  .sched-late { color: #ff453a; }
+  .sched-sleep { color: #30d158; }
+  .sched-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  .sched-table td { padding: 6px 8px; border-bottom: 1px solid #1f1f1f; color: #ccc; }
+  .sched-table td:first-child { color: #888; width: 80px; font-weight: 500; }
+  .sched-table tr:last-child td { border-bottom: none; }
+  .sched-highlight { color: #f0f0f0; font-weight: 600; }
+  .sched-summary {
+    background: #141414; border-radius: 14px; padding: 16px;
+    margin-top: 20px; border: 1px solid #1f1f1f;
+  }
+  .sched-summary-title {
+    font-size: 13px; font-weight: 700; text-transform: uppercase;
+    letter-spacing: 1px; color: #ff9f0a; margin-bottom: 12px;
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>Mission Board</h1>
+  <div class="date">TOMORROW</div>
+</div>
+
+<div class="tabs">
+  <div class="tab active" onclick="showTab('schedule')">Schedule</div>
+  <div class="tab" onclick="showTab('missions')">Missions</div>
+  <div class="tab" onclick="showTab('goals')">Goals</div>
+</div>
+
+<div id="missions" class="tab-panel">
+  <div class="section">
+    <div class="section-title title-1">1 &mdash; Blocked</div>
+    <div class="task">
+      <div class="task-id">MISSION 1</div>
+      <div class="task-body">Register Reddit app &rarr; paste CLIENT_ID + CLIENT_SECRET</div>
+    </div>
+    <div class="task">
+      <div class="task-id">MISSION 4</div>
+      <div class="task-body">Text/call Donna on roof fix</div>
+    </div>
+  </div>
+  <div class="section">
+    <div class="section-title title-2">2 &mdash; In Progress / Ready</div>
+    <div class="task">
+      <div class="task-id">MISSION 7</div>
+      <div class="task-body">Review SEO roundup &rarr; implement 1 tactic</div>
+      <div class="task-when">Monday</div>
+    </div>
+  </div>
+  <div class="section">
+    <div class="section-title title-3">3 &mdash; Pending</div>
+    <div class="task">
+      <div class="task-id">MISSION 3</div>
+      <div class="task-body">Make 3 lead calls</div>
+      <div class="task-when">Tomorrow 9:50 AM</div>
+    </div>
+    <div class="task">
+      <div class="task-id">MISSION 5</div>
+      <div class="task-body">Call Robert (deal follow-up)</div>
+      <div class="task-when">Tue 7/22</div>
+    </div>
+    <div class="task">
+      <div class="task-id">MISSION 6</div>
+      <div class="task-body">Mulch</div>
+      <div class="task-when">This weekend</div>
+    </div>
+  </div>
+  <div class="top3">
+    <div class="top3-title">Top 3</div>
+    <ol>
+      <li>Make 3 lead calls &mdash; 9:50 AM reminder</li>
+      <li>Text Donna &mdash; roof fix follow-up</li>
+      <li>Request indexing for top 5 city pages in GSC</li>
+    </ol>
+  </div>
+</div>
+
+<div id="goals" class="tab-panel">
+  <div class="goal-category">
+    <div class="goal-category-title goal-health">&#128170; Health</div>
+    <ul class="goal-list">
+      <li><div class="goal-checkbox"></div>Wake up at 5:00 AM consistently</li>
+      <li><div class="goal-checkbox"></div>Wind down by 9:00 PM, asleep by 9:30 PM</li>
+      <li><div class="goal-checkbox"></div>Exercise 3&times; per week</li>
+    </ul>
+  </div>
+  <div class="goal-category">
+    <div class="goal-category-title goal-family">&#128104;&#8205;&#128105;&#8205;&#128103; Family</div>
+    <ul class="goal-list">
+      <li><div class="goal-checkbox"></div>Protect sacred morning block (5:00&ndash;6:45 AM)</li>
+      <li><div class="goal-checkbox"></div>Complete roof fix follow-up with Donna</li>
+      <li><div class="goal-checkbox"></div>Weekly family activity</li>
+    </ul>
+  </div>
+  <div class="goal-category">
+    <div class="goal-category-title goal-income">&#128176; Income</div>
+    <ul class="goal-list">
+      <li><div class="goal-checkbox"></div>Upload 13 city pages to sellmyhousefastbrevardfl.com</li>
+      <li><div class="goal-checkbox"></div>Make 3 lead calls per day</li>
+      <li><div class="goal-checkbox"></div>Close 1 wholesale deal this month</li>
+    </ul>
+  </div>
+</div>
+
+<div id="schedule" class="tab-panel active">
+  <div class="sched-day">
+    <div class="sched-day-title sched-normal">📅 MONDAY — 5:15 AM Wake</div>
+    <table class="sched-table">
+      <tr><td>5:15</td><td class="sched-highlight">Wake → Gym (legs/core)</td></tr>
+      <tr><td>6:45</td><td>Shower, dress</td></tr>
+      <tr><td>7:00</td><td class="sched-highlight">Family breakfast</td></tr>
+      <tr><td>9:00</td><td>W-2 Block 1</td></tr>
+      <tr><td>12:00</td><td class="sched-highlight">Family lunch</td></tr>
+      <tr><td>1:15</td><td>W-2 Block 2 + 6 PM meeting</td></tr>
+      <tr><td>6:00</td><td class="sched-highlight">Dinner + family</td></tr>
+      <tr><td>7:00</td><td class="sched-highlight">Kids bedtime</td></tr>
+      <tr><td>8:00</td><td class="sched-highlight">Wife time</td></tr>
+      <tr><td>9:30</td><td>Bed</td></tr>
+    </table>
+  </div>
+
+  <div class="sched-day">
+    <div class="sched-day-title sched-early">🔥 TUESDAY — 5:15 AM Wake</div>
+    <table class="sched-table">
+      <tr><td>5:15</td><td class="sched-highlight">Wake → Business Window</td></tr>
+      <tr><td>6:45</td><td>Shower, dress</td></tr>
+      <tr><td>7:00</td><td class="sched-highlight">Family breakfast</td></tr>
+      <tr><td>9:00</td><td>W-2 Block 1</td></tr>
+      <tr><td>12:00</td><td class="sched-highlight">Family lunch</td></tr>
+      <tr><td>1:15</td><td>W-2 Block 2</td></tr>
+      <tr><td>5:00</td><td class="sched-highlight">Dinner + family</td></tr>
+      <tr><td>7:00</td><td class="sched-highlight">Kids bedtime</td></tr>
+      <tr><td>8:00</td><td class="sched-highlight">Wife time</td></tr>
+      <tr><td>9:30</td><td>Bed</td></tr>
+    </table>
+  </div>
+
+  <div class="sched-day">
+    <div class="sched-day-title sched-early">🔥 WEDNESDAY — 5:15 AM Wake</div>
+    <table class="sched-table">
+      <tr><td>5:15</td><td class="sched-highlight">Wake → Business Window</td></tr>
+      <tr><td>6:45</td><td>Shower, dress</td></tr>
+      <tr><td>7:00</td><td class="sched-highlight">Family breakfast</td></tr>
+      <tr><td>9:00</td><td>W-2 Block 1</td></tr>
+      <tr><td>12:00</td><td class="sched-highlight">Family lunch</td></tr>
+      <tr><td>1:15</td><td>W-2 Block 2</td></tr>
+      <tr><td>5:00</td><td class="sched-highlight">Dinner + family</td></tr>
+      <tr><td>7:00</td><td class="sched-highlight">Kids bedtime</td></tr>
+      <tr><td>8:00</td><td class="sched-highlight">Wife time</td></tr>
+      <tr><td>9:30</td><td>Bed</td></tr>
+    </table>
+  </div>
+
+  <div class="sched-day">
+    <div class="sched-day-title sched-late">🚨 THURSDAY — 5:15 AM Wake (Late Day)</div>
+    <table class="sched-table">
+      <tr><td>5:15</td><td class="sched-highlight">Wake → Morning prep</td></tr>
+      <tr><td>7:00</td><td class="sched-highlight">Family breakfast</td></tr>
+      <tr><td>9:00</td><td>W-2 Block 1</td></tr>
+      <tr><td>12:00</td><td class="sched-highlight">Family lunch</td></tr>
+      <tr><td>1:15</td><td>W-2 Block 2 + 6 PM meeting</td></tr>
+      <tr><td>6:00</td><td class="sched-highlight">Dinner + family</td></tr>
+      <tr><td>7:00</td><td class="sched-highlight">Kids bedtime</td></tr>
+      <tr><td>8:00</td><td class="sched-highlight">GYM — evening session</td></tr>
+      <tr><td>9:30</td><td class="sched-highlight">Business Power Block</td></tr>
+      <tr><td>11:30</td><td>Bed</td></tr>
+    </table>
+  </div>
+
+  <div class="sched-day">
+    <div class="sched-day-title sched-sleep">😴 FRIDAY — 6:30 AM Wake (Sleep In)</div>
+    <table class="sched-table">
+      <tr><td>6:30</td><td class="sched-highlight">Wake → Sleep in</td></tr>
+      <tr><td>7:00</td><td class="sched-highlight">Family breakfast</td></tr>
+      <tr><td>9:00</td><td>W-2 Block 1</td></tr>
+      <tr><td>12:00</td><td class="sched-highlight">Family lunch</td></tr>
+      <tr><td>1:15</td><td>W-2 Block 2</td></tr>
+      <tr><td>5:00</td><td class="sched-highlight">Dinner + family</td></tr>
+      <tr><td>7:00</td><td class="sched-highlight">Kids bedtime</td></tr>
+      <tr><td>8:00</td><td class="sched-highlight">Wife time</td></tr>
+      <tr><td>9:30</td><td class="sched-highlight">Business Power Block</td></tr>
+      <tr><td>11:30</td><td>Bed</td></tr>
+    </table>
+  </div>
+
+  <div class="sched-summary">
+    <div class="sched-summary-title">Weekly Overview</div>
+    <table class="sched-table">
+      <tr><td>Business</td><td class="sched-highlight">Tue/Wed 5:30–6:45 AM + Thu/Fri 9:30–11:30 PM (6.5h)</td></tr>
+      <tr><td>Gym</td><td class="sched-highlight">Mon 5:30 AM + Thu 8:00 PM (3h)</td></tr>
+      <tr><td>W-2</td><td>43 hours</td></tr>
+      <tr><td>Family</td><td>28.75 hours</td></tr>
+      <tr><td>Reddit</td><td>After 9 PM (Mon–Wed/Fri) — 30 min max</td></tr>
+    </table>
+  </div>
+</div>
+
+<script>
+  function showTab(tabName) {
+    document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+    document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+    event.target.classList.add('active');
+    document.getElementById(tabName).classList.add('active');
+  }
+</script>
+
+</body>
+</html>
