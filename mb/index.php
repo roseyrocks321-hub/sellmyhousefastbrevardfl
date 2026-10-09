@@ -30,7 +30,7 @@ $tasks = $data['tasks'] ?? [];
 $income = $data['income'] ?? ['enabled' => true, 'monthlyTarget' => 10000, 'entries' => []];
 
 $categories = [
-    'schedule'    => ['label' => '📅 Schedule',  'icon' => '📅'],
+    'schedule'    => ['label' => '📅 Schedule 💪',  'icon' => '📅'],
     'real-estate' => ['label' => '🏠 Real Estate', 'icon' => '🏠'],
     'career'      => ['label' => '💼 Career',      'icon' => '💼'],
     'personal'    => ['label' => '🏠 Personal',    'icon' => '🏠'],
@@ -586,6 +586,49 @@ foreach (array_merge($grouped['goals']['new'], $grouped['goals']['in-progress'],
             border-color: #ff9f0a;
             color: #ff9f0a;
         }
+
+        /* Schedule tab grid */
+        .sched-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+        @media (min-width: 1000px) {
+            .sched-grid { grid-template-columns: repeat(3, 1fr); }
+        }
+        .sched-day {
+            background: #141414;
+            border-radius: 16px;
+            padding: 16px;
+            border: 1px solid #1f1f1f;
+        }
+        .sched-day-title {
+            font-size: 14px;
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+        .sched-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 13px;
+        }
+        .sched-table td {
+            padding: 5px 0;
+            border-bottom: 1px solid #1f1f1f;
+        }
+        .sched-table tr:last-child td { border-bottom: none; }
+        .sched-overview {
+            background: #141414;
+            border-radius: 16px;
+            padding: 16px;
+            border: 1px solid #1f1f1f;
+        }
+    /* Schedule tab override */
+        #board-schedule {
+            display: block;
+            grid-template-columns: 1fr !important;
+        }
     </style>
 </head>
 <body>
@@ -614,7 +657,7 @@ foreach (array_merge($grouped['goals']['new'], $grouped['goals']['in-progress'],
         ?>
             <button class="tab <?php echo $cat === 'schedule' ? 'active' : ''; ?>" data-cat="<?php echo $cat; ?>" onclick="switchTab('<?php echo $cat; ?>')">
                 <?php echo $cfg['label']; ?>
-                <span class="badge"><?php echo $catOutstanding; ?></span>
+                <?php if ($cat !== 'schedule'): ?><span class="badge"><?php echo $catOutstanding; ?></span><?php endif; ?>
             </button>
         <?php endforeach; ?>
     </div>
@@ -623,90 +666,220 @@ foreach (array_merge($grouped['goals']['new'], $grouped['goals']['in-progress'],
 
     <!-- Schedule Panel -->
     <div class="board" id="board-schedule" style="display:block;">
-        <div class="sched-day">
-            <div class="sched-day-title" style="color:#64d2ff;">📅 MONDAY — 5:15 AM Wake</div>
-            <table class="sched-table">
-                <tr><td style="width:60px;color:#888;">5:15</td><td style="color:#f0f0f0;font-weight:600;">Wake → Gym (legs/core)</td></tr>
-                <tr><td style="color:#888;">6:45</td><td style="color:#ccc;">Shower, dress</td></tr>
-                <tr><td style="color:#888;">7:00</td><td style="color:#f0f0f0;font-weight:600;">Family breakfast</td></tr>
-                <tr><td style="color:#888;">9:00</td><td style="color:#ccc;">W-2 Block 1</td></tr>
-                <tr><td style="color:#888;">12:00</td><td style="color:#f0f0f0;font-weight:600;">Family lunch</td></tr>
-                <tr><td style="color:#888;">1:15</td><td style="color:#ccc;">W-2 Block 2 + 6 PM meeting</td></tr>
-                <tr><td style="color:#888;">6:00</td><td style="color:#f0f0f0;font-weight:600;">Dinner + family</td></tr>
-                <tr><td style="color:#888;">7:00</td><td style="color:#f0f0f0;font-weight:600;">Kids bedtime</td></tr>
-                <tr><td style="color:#888;">8:00</td><td style="color:#f0f0f0;font-weight:600;">Wife time</td></tr>
-                <tr><td style="color:#888;">9:30</td><td style="color:#ccc;">Bed</td></tr>
-            </table>
+        <div class="sched-grid">
+            <div class="sched-day">
+                <div class="sched-day-title" style="color:#64d2ff;">📅 MONDAY — 5:15 AM Wake</div>
+                <table class="sched-table">
+                    <tr><td style="width:60px;color:#888;">5:15</td><td style="color:#f0f0f0;font-weight:600;">Wake → Gym (legs/core)</td></tr>
+                    <tr><td style="color:#888;">6:45</td><td style="color:#ccc;">Shower, dress</td></tr>
+                    <tr><td style="color:#888;">7:00</td><td style="color:#f0f0f0;font-weight:600;">Family breakfast</td></tr>
+                    <tr><td style="color:#888;">9:00</td><td style="color:#ccc;">W-2 Block 1</td></tr>
+                    <tr><td style="color:#888;">12:00</td><td style="color:#f0f0f0;font-weight:600;">Family lunch</td></tr>
+                    <tr><td style="color:#888;">1:15</td><td style="color:#ccc;">W-2 Block 2 + 6 PM meeting</td></tr>
+                    <tr><td style="color:#888;">6:00</td><td style="color:#f0f0f0;font-weight:600;">Dinner + family</td></tr>
+                    <tr><td style="color:#888;">7:00</td><td style="color:#f0f0f0;font-weight:600;">Kids bedtime</td></tr>
+                    <tr><td style="color:#888;">8:00</td><td style="color:#f0f0f0;font-weight:600;">Wife time</td></tr>
+                    <tr><td style="color:#888;">9:30</td><td style="color:#ccc;">Bed</td></tr>
+                </table>
+            </div>
+            <div class="sched-day">
+                <div class="sched-day-title" style="color:#ff9f0a;">🔥 TUESDAY — 5:15 AM Wake</div>
+                <table class="sched-table">
+                    <tr><td style="width:60px;color:#888;">5:15</td><td style="color:#f0f0f0;font-weight:600;">Wake → Business Window</td></tr>
+                    <tr><td style="color:#888;">6:45</td><td style="color:#ccc;">Shower, dress</td></tr>
+                    <tr><td style="color:#888;">7:00</td><td style="color:#f0f0f0;font-weight:600;">Family breakfast</td></tr>
+                    <tr><td style="color:#888;">9:00</td><td style="color:#ccc;">W-2 Block 1</td></tr>
+                    <tr><td style="color:#888;">12:00</td><td style="color:#f0f0f0;font-weight:600;">Family lunch</td></tr>
+                    <tr><td style="color:#888;">1:15</td><td style="color:#ccc;">W-2 Block 2</td></tr>
+                    <tr><td style="color:#888;">5:00</td><td style="color:#f0f0f0;font-weight:600;">Dinner + family</td></tr>
+                    <tr><td style="color:#888;">7:00</td><td style="color:#f0f0f0;font-weight:600;">Kids bedtime</td></tr>
+                    <tr><td style="color:#888;">8:00</td><td style="color:#f0f0f0;font-weight:600;">Wife time</td></tr>
+                    <tr><td style="color:#888;">9:30</td><td style="color:#ccc;">Bed</td></tr>
+                </table>
+            </div>
+            <div class="sched-day">
+                <div class="sched-day-title" style="color:#ff9f0a;">🔥 WEDNESDAY — 5:15 AM Wake</div>
+                <table class="sched-table">
+                    <tr><td style="width:60px;color:#888;">5:15</td><td style="color:#f0f0f0;font-weight:600;">Wake → Business Window</td></tr>
+                    <tr><td style="color:#888;">6:45</td><td style="color:#ccc;">Shower, dress</td></tr>
+                    <tr><td style="color:#888;">7:00</td><td style="color:#f0f0f0;font-weight:600;">Family breakfast</td></tr>
+                    <tr><td style="color:#888;">9:00</td><td style="color:#ccc;">W-2 Block 1</td></tr>
+                    <tr><td style="color:#888;">12:00</td><td style="color:#f0f0f0;font-weight:600;">Family lunch</td></tr>
+                    <tr><td style="color:#888;">1:15</td><td style="color:#ccc;">W-2 Block 2</td></tr>
+                    <tr><td style="color:#888;">5:00</td><td style="color:#f0f0f0;font-weight:600;">Dinner + family</td></tr>
+                    <tr><td style="color:#888;">7:00</td><td style="color:#f0f0f0;font-weight:600;">Kids bedtime</td></tr>
+                    <tr><td style="color:#888;">8:00</td><td style="color:#f0f0f0;font-weight:600;">Wife time</td></tr>
+                    <tr><td style="color:#888;">9:30</td><td style="color:#ccc;">Bed</td></tr>
+                </table>
+            </div>
+            <div class="sched-day">
+                <div class="sched-day-title" style="color:#ff453a;">🚨 THURSDAY — 5:15 AM Wake (Late Day)</div>
+                <table class="sched-table">
+                    <tr><td style="width:60px;color:#888;">5:15</td><td style="color:#f0f0f0;font-weight:600;">Wake → Morning prep</td></tr>
+                    <tr><td style="color:#888;">7:00</td><td style="color:#f0f0f0;font-weight:600;">Family breakfast</td></tr>
+                    <tr><td style="color:#888;">9:00</td><td style="color:#ccc;">W-2 Block 1</td></tr>
+                    <tr><td style="color:#888;">12:00</td><td style="color:#f0f0f0;font-weight:600;">Family lunch</td></tr>
+                    <tr><td style="color:#888;">1:15</td><td style="color:#ccc;">W-2 Block 2 + 6 PM meeting</td></tr>
+                    <tr><td style="color:#888;">6:00</td><td style="color:#f0f0f0;font-weight:600;">Dinner + family</td></tr>
+                    <tr><td style="color:#888;">7:00</td><td style="color:#f0f0f0;font-weight:600;">Kids bedtime</td></tr>
+                    <tr><td style="color:#888;">8:00</td><td style="color:#f0f0f0;font-weight:600;">GYM — evening session</td></tr>
+                    <tr><td style="color:#888;">9:30</td><td style="color:#f0f0f0;font-weight:600;">Business Power Block</td></tr>
+                    <tr><td style="color:#888;">11:30</td><td style="color:#ccc;">Bed</td></tr>
+                </table>
+            </div>
+            <div class="sched-day">
+                <div class="sched-day-title" style="color:#30d158;">😴 FRIDAY — 6:30 AM Wake (Sleep In)</div>
+                <table class="sched-table">
+                    <tr><td style="width:60px;color:#888;">6:30</td><td style="color:#f0f0f0;font-weight:600;">Wake → Sleep in</td></tr>
+                    <tr><td style="color:#888;">7:00</td><td style="color:#f0f0f0;font-weight:600;">Family breakfast</td></tr>
+                    <tr><td style="color:#888;">9:00</td><td style="color:#ccc;">W-2 Block 1</td></tr>
+                    <tr><td style="color:#888;">12:00</td><td style="color:#f0f0f0;font-weight:600;">Family lunch</td></tr>
+                    <tr><td style="color:#888;">1:15</td><td style="color:#ccc;">W-2 Block 2</td></tr>
+                    <tr><td style="color:#888;">5:00</td><td style="color:#f0f0f0;font-weight:600;">Dinner + family</td></tr>
+                    <tr><td style="color:#888;">7:00</td><td style="color:#f0f0f0;font-weight:600;">Kids bedtime</td></tr>
+                    <tr><td style="color:#888;">8:00</td><td style="color:#f0f0f0;font-weight:600;">Wife time</td></tr>
+                    <tr><td style="color:#888;">9:30</td><td style="color:#f0f0f0;font-weight:600;">Business Power Block</td></tr>
+                    <tr><td style="color:#888;">11:30</td><td style="color:#ccc;">Bed</td></tr>
+                </table>
+            </div>
+            <div class="sched-overview">
+                <div style="font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:#ff9f0a;margin-bottom:12px;">Weekly Overview</div>
+                <table style="width:100%;border-collapse:collapse;font-size:13px;">
+                    <tr><td style="padding:6px 8px;border-bottom:1px solid #1f1f1f;color:#888;">Business</td><td style="padding:6px 8px;border-bottom:1px solid #1f1f1f;color:#f0f0f0;font-weight:600;">Tue/Wed 5:30–6:45 AM + Thu/Fri 9:30–11:30 PM (6.5h)</td></tr>
+                    <tr><td style="padding:6px 8px;border-bottom:1px solid #1f1f1f;color:#888;">Gym</td><td style="padding:6px 8px;border-bottom:1px solid #1f1f1f;color:#f0f0f0;font-weight:600;">Mon 5:30 AM + Thu 8:00 PM (3h)</td></tr>
+                    <tr><td style="padding:6px 8px;border-bottom:1px solid #1f1f1f;color:#888;">W-2</td><td style="padding:6px 8px;border-bottom:1px solid #1f1f1f;color:#ccc;">43 hours</td></tr>
+                    <tr><td style="padding:6px 8px;border-bottom:1px solid #1f1f1f;color:#888;">Family</td><td style="padding:6px 8px;border-bottom:1px solid #1f1f1f;color:#ccc;">28.75 hours</td></tr>
+                    <tr><td style="padding:6px 8px;color:#888;">Reddit</td><td style="padding:6px 8px;color:#ccc;">After 9 PM (Mon–Wed/Fri) — 30 min max</td></tr>
+                </table>
+            </div>
         </div>
-        <div class="sched-day">
-            <div class="sched-day-title" style="color:#ff9f0a;">🔥 TUESDAY — 5:15 AM Wake</div>
-            <table class="sched-table">
-                <tr><td style="width:60px;color:#888;">5:15</td><td style="color:#f0f0f0;font-weight:600;">Wake → Business Window</td></tr>
-                <tr><td style="color:#888;">6:45</td><td style="color:#ccc;">Shower, dress</td></tr>
-                <tr><td style="color:#888;">7:00</td><td style="color:#f0f0f0;font-weight:600;">Family breakfast</td></tr>
-                <tr><td style="color:#888;">9:00</td><td style="color:#ccc;">W-2 Block 1</td></tr>
-                <tr><td style="color:#888;">12:00</td><td style="color:#f0f0f0;font-weight:600;">Family lunch</td></tr>
-                <tr><td style="color:#888;">1:15</td><td style="color:#ccc;">W-2 Block 2</td></tr>
-                <tr><td style="color:#888;">5:00</td><td style="color:#f0f0f0;font-weight:600;">Dinner + family</td></tr>
-                <tr><td style="color:#888;">7:00</td><td style="color:#f0f0f0;font-weight:600;">Kids bedtime</td></tr>
-                <tr><td style="color:#888;">8:00</td><td style="color:#f0f0f0;font-weight:600;">Wife time</td></tr>
-                <tr><td style="color:#888;">9:30</td><td style="color:#ccc;">Bed</td></tr>
+
+        <!-- Income Tracker (Schedule tab) -->
+        <div class="income-panel">
+            <div class="income-header">
+                <div class="income-title">💰 Income Tracker</div>
+                <button class="btn" style="padding: 6px 12px; font-size: 12px;" onclick="document.getElementById('income-form-row-schedule').style.display='grid'">+ Add Income</button>
+            </div>
+            <div class="income-stats">
+                <div class="stat-box">
+                    <div class="stat-value">$<?php echo number_format($currentMonthTotal); ?></div>
+                    <div class="stat-label">This Month</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-value">$<?php echo number_format($monthlyTarget); ?></div>
+                    <div class="stat-label">Target</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-value"><?php echo $progressPct; ?>%</div>
+                    <div class="stat-label">Progress</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-value" style="color: <?php echo $monthOverMonth >= 0 ? '#30d158' : '#ff453a'; ?>">
+                        <?php echo ($monthOverMonth >= 0 ? '+' : '') . $monthOverMonth; ?>%
+                    </div>
+                    <div class="stat-label">vs Last Month</div>
+                </div>
+            </div>
+            <div class="progress-bar">
+                <div class="progress-fill" style="width: <?php echo $progressPct; ?>%"><?php echo $progressPct; ?>%</div>
+            </div>
+            <div class="income-form" id="income-form-row-schedule" style="display:none;">
+                <div>
+                    <label>Date</label>
+                    <input type="date" id="income-date-schedule" value="<?php echo date('Y-m-d'); ?>">
+                </div>
+                <div>
+                    <label>Amount ($)</label>
+                    <input type="number" id="income-amount-schedule" placeholder="0.00" step="0.01">
+                </div>
+                <div>
+                    <label>Source / Notes</label>
+                    <input type="text" id="income-source-schedule" placeholder="e.g. Commission, wholesale deal...">
+                </div>
+                <div>
+                    <button class="btn" onclick="addIncomeSchedule()">Add</button>
+                </div>
+            </div>
+            <?php if (!empty($incomeEntries)): ?>
+            <table class="income-table">
+                <thead>
+                    <tr>
+                        <th>Date</th>
+                        <th>Amount</th>
+                        <th>Source</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php foreach (array_reverse($incomeEntries) as $entry): ?>
+                    <tr data-date="<?php echo htmlspecialchars($entry['date']); ?>" data-amount="<?php echo floatval($entry['amount']); ?>">
+                        <td><?php echo htmlspecialchars($entry['date']); ?></td>
+                        <td>$<?php echo number_format(floatval($entry['amount']), 2); ?></td>
+                        <td><?php echo htmlspecialchars($entry['source'] ?? ''); ?></td>
+                        <td><button class="income-delete" onclick="deleteIncome('<?php echo htmlspecialchars($entry['date']); ?>', <?php echo floatval($entry['amount']); ?>)">×</button></td>
+                    </tr>
+                    <?php endforeach; ?>
+                </tbody>
             </table>
+            <?php endif; ?>
         </div>
-        <div class="sched-day">
-            <div class="sched-day-title" style="color:#ff9f0a;">🔥 WEDNESDAY — 5:15 AM Wake</div>
-            <table class="sched-table">
-                <tr><td style="width:60px;color:#888;">5:15</td><td style="color:#f0f0f0;font-weight:600;">Wake → Business Window</td></tr>
-                <tr><td style="color:#888;">6:45</td><td style="color:#ccc;">Shower, dress</td></tr>
-                <tr><td style="color:#888;">7:00</td><td style="color:#f0f0f0;font-weight:600;">Family breakfast</td></tr>
-                <tr><td style="color:#888;">9:00</td><td style="color:#ccc;">W-2 Block 1</td></tr>
-                <tr><td style="color:#888;">12:00</td><td style="color:#f0f0f0;font-weight:600;">Family lunch</td></tr>
-                <tr><td style="color:#888;">1:15</td><td style="color:#ccc;">W-2 Block 2</td></tr>
-                <tr><td style="color:#888;">5:00</td><td style="color:#f0f0f0;font-weight:600;">Dinner + family</td></tr>
-                <tr><td style="color:#888;">7:00</td><td style="color:#f0f0f0;font-weight:600;">Kids bedtime</td></tr>
-                <tr><td style="color:#888;">8:00</td><td style="color:#f0f0f0;font-weight:600;">Wife time</td></tr>
-                <tr><td style="color:#888;">9:30</td><td style="color:#ccc;">Bed</td></tr>
-            </table>
-        </div>
-        <div class="sched-day">
-            <div class="sched-day-title" style="color:#ff453a;">🚨 THURSDAY — 5:15 AM Wake (Late Day)</div>
-            <table class="sched-table">
-                <tr><td style="width:60px;color:#888;">5:15</td><td style="color:#f0f0f0;font-weight:600;">Wake → Morning prep</td></tr>
-                <tr><td style="color:#888;">7:00</td><td style="color:#f0f0f0;font-weight:600;">Family breakfast</td></tr>
-                <tr><td style="color:#888;">9:00</td><td style="color:#ccc;">W-2 Block 1</td></tr>
-                <tr><td style="color:#888;">12:00</td><td style="color:#f0f0f0;font-weight:600;">Family lunch</td></tr>
-                <tr><td style="color:#888;">1:15</td><td style="color:#ccc;">W-2 Block 2 + 6 PM meeting</td></tr>
-                <tr><td style="color:#888;">6:00</td><td style="color:#f0f0f0;font-weight:600;">Dinner + family</td></tr>
-                <tr><td style="color:#888;">7:00</td><td style="color:#f0f0f0;font-weight:600;">Kids bedtime</td></tr>
-                <tr><td style="color:#888;">8:00</td><td style="color:#f0f0f0;font-weight:600;">GYM — evening session</td></tr>
-                <tr><td style="color:#888;">9:30</td><td style="color:#f0f0f0;font-weight:600;">Business Power Block</td></tr>
-                <tr><td style="color:#888;">11:30</td><td style="color:#ccc;">Bed</td></tr>
-            </table>
-        </div>
-        <div class="sched-day">
-            <div class="sched-day-title" style="color:#30d158;">😴 FRIDAY — 6:30 AM Wake (Sleep In)</div>
-            <table class="sched-table">
-                <tr><td style="width:60px;color:#888;">6:30</td><td style="color:#f0f0f0;font-weight:600;">Wake → Sleep in</td></tr>
-                <tr><td style="color:#888;">7:00</td><td style="color:#f0f0f0;font-weight:600;">Family breakfast</td></tr>
-                <tr><td style="color:#888;">9:00</td><td style="color:#ccc;">W-2 Block 1</td></tr>
-                <tr><td style="color:#888;">12:00</td><td style="color:#f0f0f0;font-weight:600;">Family lunch</td></tr>
-                <tr><td style="color:#888;">1:15</td><td style="color:#ccc;">W-2 Block 2</td></tr>
-                <tr><td style="color:#888;">5:00</td><td style="color:#f0f0f0;font-weight:600;">Dinner + family</td></tr>
-                <tr><td style="color:#888;">7:00</td><td style="color:#f0f0f0;font-weight:600;">Kids bedtime</td></tr>
-                <tr><td style="color:#888;">8:00</td><td style="color:#f0f0f0;font-weight:600;">Wife time</td></tr>
-                <tr><td style="color:#888;">9:30</td><td style="color:#f0f0f0;font-weight:600;">Business Power Block</td></tr>
-                <tr><td style="color:#888;">11:30</td><td style="color:#ccc;">Bed</td></tr>
-            </table>
-        </div>
-        <div style="background:#141414;border-radius:14px;padding:16px;border:1px solid #1f1f1f;margin-top:12px;">
-            <div style="font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:#ff9f0a;margin-bottom:12px;">Weekly Overview</div>
-            <table style="width:100%;border-collapse:collapse;font-size:13px;">
-                <tr><td style="padding:6px 8px;border-bottom:1px solid #1f1f1f;color:#888;">Business</td><td style="padding:6px 8px;border-bottom:1px solid #1f1f1f;color:#f0f0f0;font-weight:600;">Tue/Wed 5:30–6:45 AM + Thu/Fri 9:30–11:30 PM (6.5h)</td></tr>
-                <tr><td style="padding:6px 8px;border-bottom:1px solid #1f1f1f;color:#888;">Gym</td><td style="padding:6px 8px;border-bottom:1px solid #1f1f1f;color:#f0f0f0;font-weight:600;">Mon 5:30 AM + Thu 8:00 PM (3h)</td></tr>
-                <tr><td style="padding:6px 8px;border-bottom:1px solid #1f1f1f;color:#888;">W-2</td><td style="padding:6px 8px;border-bottom:1px solid #1f1f1f;color:#ccc;">43 hours</td></tr>
-                <tr><td style="padding:6px 8px;border-bottom:1px solid #1f1f1f;color:#888;">Family</td><td style="padding:6px 8px;border-bottom:1px solid #1f1f1f;color:#ccc;">28.75 hours</td></tr>
-                <tr><td style="padding:6px 8px;color:#888;">Reddit</td><td style="padding:6px 8px;color:#ccc;">After 9 PM (Mon–Wed/Fri) — 30 min max</td></tr>
-            </table>
+
+        <!-- Goals (Schedule tab) -->
+        <div class="goals-board">
+            <div class="goal-category">
+                <div class="goal-cat-title goal-health">💪 Health</div>
+                <ul class="goal-list">
+                    <?php foreach ($goalHealth as $task): ?>
+                    <li class="goal-item" data-id="<?php echo htmlspecialchars($task['id']); ?>">
+                        <input type="checkbox" class="goal-checkbox" <?php echo ($task['status'] ?? '') === 'completed' ? 'checked' : ''; ?> onchange="toggleGoal('<?php echo htmlspecialchars($task['id']); ?>')">
+                        <div style="flex:1;">
+                            <div style="font-weight:600;"><?php echo htmlspecialchars($task['title']); ?></div>
+                            <?php if (!empty($task['notes'])): ?>
+                            <div style="font-size: 12px; color: #888; margin-top: 2px;"><?php echo htmlspecialchars($task['notes']); ?></div>
+                            <?php endif; ?>
+                        </div>
+                        <button class="goal-delete" onclick="deleteGoalTask('<?php echo htmlspecialchars($task['id']); ?>')">×</button>
+                    </li>
+                    <?php endforeach; ?>
+                </ul>
+                <button class="add-goal-btn" onclick="openGoalModal('health')">+ Add Health Goal</button>
+            </div>
+            <div class="goal-category">
+                <div class="goal-cat-title goal-family">👨‍👩‍👧 Family</div>
+                <ul class="goal-list">
+                    <?php foreach ($goalFamily as $task): ?>
+                    <li class="goal-item" data-id="<?php echo htmlspecialchars($task['id']); ?>">
+                        <input type="checkbox" class="goal-checkbox" <?php echo ($task['status'] ?? '') === 'completed' ? 'checked' : ''; ?> onchange="toggleGoal('<?php echo htmlspecialchars($task['id']); ?>')">
+                        <div style="flex:1;">
+                            <div style="font-weight:600;"><?php echo htmlspecialchars($task['title']); ?></div>
+                            <?php if (!empty($task['notes'])): ?>
+                            <div style="font-size: 12px; color: #888; margin-top: 2px;"><?php echo htmlspecialchars($task['notes']); ?></div>
+                            <?php endif; ?>
+                        </div>
+                        <button class="goal-delete" onclick="deleteGoalTask('<?php echo htmlspecialchars($task['id']); ?>')">×</button>
+                    </li>
+                    <?php endforeach; ?>
+                </ul>
+                <button class="add-goal-btn" onclick="openGoalModal('family')">+ Add Family Goal</button>
+            </div>
+            <div class="goal-category">
+                <div class="goal-cat-title goal-income">💰 Income</div>
+                <ul class="goal-list">
+                    <?php foreach ($goalIncome as $task): ?>
+                    <li class="goal-item" data-id="<?php echo htmlspecialchars($task['id']); ?>">
+                        <input type="checkbox" class="goal-checkbox" <?php echo ($task['status'] ?? '') === 'completed' ? 'checked' : ''; ?> onchange="toggleGoal('<?php echo htmlspecialchars($task['id']); ?>')">
+                        <div style="flex:1;">
+                            <div style="font-weight:600;"><?php echo htmlspecialchars($task['title']); ?></div>
+                            <?php if (!empty($task['notes'])): ?>
+                            <div style="font-size: 12px; color: #888; margin-top: 2px;"><?php echo htmlspecialchars($task['notes']); ?></div>
+                            <?php endif; ?>
+                        </div>
+                        <button class="goal-delete" onclick="deleteGoalTask('<?php echo htmlspecialchars($task['id']); ?>')">×</button>
+                    </li>
+                    <?php endforeach; ?>
+                </ul>
+                <button class="add-goal-btn" onclick="openGoalModal('income')">+ Add Income Goal</button>
+            </div>
         </div>
     </div>
 
@@ -843,7 +1016,7 @@ foreach (array_merge($grouped['goals']['new'], $grouped['goals']['in-progress'],
         </div>
     </div>
     <?php else: ?>
-    <div class="board" id="board-<?php echo $cat; ?>" style="<?php echo $cat === 'real-estate' ? '' : 'display:none'; ?>">
+    <div class="board" id="board-<?php echo $cat; ?>" style="display:none;">
         <?php foreach ($columns as $status => $colCfg): ?>
         <div class="column">
             <div class="column-title" style="color:<?php echo $colCfg['color']; ?>"><?php echo $colCfg['label']; ?></div>
@@ -1145,6 +1318,20 @@ foreach (array_merge($grouped['goals']['new'], $grouped['goals']['in-progress'],
             const date = document.getElementById('income-date').value;
             const amount = parseFloat(document.getElementById('income-amount').value);
             const source = document.getElementById('income-source').value.trim();
+            if (!date || isNaN(amount) || amount <= 0) { showToast('Valid date and amount required', true); return; }
+            fetch('api.php', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ action: 'addIncome', entry: { date, amount, source } })
+            })
+            .then(r => r.json())
+            .then(d => { if (d.success) { location.reload(); } else showToast(d.error || 'Failed', true); })
+            .catch(e => showToast('Network error', true));
+        }
+        function addIncomeSchedule() {
+            const date = document.getElementById('income-date-schedule').value;
+            const amount = parseFloat(document.getElementById('income-amount-schedule').value);
+            const source = document.getElementById('income-source-schedule').value.trim();
             if (!date || isNaN(amount) || amount <= 0) { showToast('Valid date and amount required', true); return; }
             fetch('api.php', {
                 method: 'POST',
