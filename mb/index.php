@@ -94,6 +94,8 @@ foreach ($tasks as $t) {
 
 // Income calculations
 $incomeEntries = $income['entries'] ?? [];
+// Sort by date descending
+usort($incomeEntries, function($a, $b) { return strcmp($b['date'], $a['date']); });
 $monthlyTarget = $income['monthlyTarget'] ?? 10000;
 $currentMonth = date('Y-m');
 $currentMonthTotal = 0;
@@ -106,6 +108,22 @@ foreach ($incomeEntries as $entry) {
 }
 $progressPct = $monthlyTarget > 0 ? min(100, round(($currentMonthTotal / $monthlyTarget) * 100, 1)) : 0;
 $monthOverMonth = $lastMonthTotal > 0 ? round((($currentMonthTotal - $lastMonthTotal) / $lastMonthTotal) * 100, 1) : 0;
+
+// Yearly KPI calculations
+$annualGoal = $income['annualGoal'] ?? 100000;
+$yearlyTotal = 0;
+foreach ($incomeEntries as $entry) $yearlyTotal += floatval($entry['amount']);
+$yearlyPct = $annualGoal > 0 ? min(100, round(($yearlyTotal / $annualGoal) * 100, 1)) : 0;
+
+// Monthly breakdown for dropdown
+$monthlyData = [];
+foreach ($incomeEntries as $entry) {
+    $ym = substr($entry['date'], 0, 7);
+    if (!isset($monthlyData[$ym])) $monthlyData[$ym] = ['total' => 0, 'entries' => []];
+    $monthlyData[$ym]['total'] += floatval($entry['amount']);
+    $monthlyData[$ym]['entries'][] = $entry;
+}
+ksort($monthlyData);
 
 // Goal sub-categories
 $goalHealth = [];
@@ -629,6 +647,136 @@ foreach (array_merge($grouped['goals']['new'], $grouped['goals']['in-progress'],
             display: block;
             grid-template-columns: 1fr !important;
         }
+
+        .yearly-kpi {
+            background: linear-gradient(135deg, #1c1c1c 0%, #141414 100%);
+            border: 1px solid #2c2c2c;
+            border-radius: 12px;
+            padding: 16px 20px;
+            margin-bottom: 16px;
+        }
+        .yearly-kpi-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+        .yearly-kpi-title {
+            font-size: 14px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #ff9f0a;
+        }
+        .yearly-kpi-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+            margin-bottom: 12px;
+        }
+        .yearly-kpi-stat {
+            text-align: center;
+        }
+        .yearly-kpi-stat .value {
+            font-size: 22px;
+            font-weight: 700;
+            color: #30d158;
+        }
+        .yearly-kpi-stat .label {
+            font-size: 11px;
+            color: #888;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-top: 4px;
+        }
+        .yearly-progress-bar {
+            height: 10px;
+            background: #1c1c1c;
+            border-radius: 5px;
+            overflow: hidden;
+            border: 1px solid #2c2c2c;
+        }
+        .yearly-progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #30d158, #ff9f0a, #ff453a);
+            border-radius: 5px;
+            transition: width 0.5s ease;
+            position: relative;
+        }
+        .yearly-progress-fill::after {
+            content: attr(data-pct);
+            position: absolute;
+            right: 8px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 10px;
+            font-weight: 700;
+            color: #fff;
+            text-shadow: 0 1px 2px rgba(0,0,0,0.5);
+        }
+        .monthly-dropdown {
+            margin-top: 16px;
+        }
+        .monthly-dropdown select {
+            width: 100%;
+            padding: 10px 14px;
+            background: #1c1c1c;
+            border: 1px solid #2c2c2c;
+            border-radius: 8px;
+            color: #e0e0e0;
+            font-size: 14px;
+            cursor: pointer;
+            margin-bottom: 12px;
+        }
+        .monthly-dropdown select:focus {
+            outline: none;
+            border-color: #ff9f0a;
+        }
+        .monthly-detail {
+            display: none;
+            background: #1c1c1c;
+            border: 1px solid #2c2c2c;
+            border-radius: 10px;
+            padding: 12px;
+        }
+        .monthly-detail.active {
+            display: block;
+        }
+        .monthly-detail-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+            padding-bottom: 8px;
+            border-bottom: 1px solid #2c2c2c;
+        }
+        .monthly-detail-total {
+            font-size: 18px;
+            font-weight: 700;
+            color: #30d158;
+        }
+        .monthly-detail-table {
+            width: 100%;
+            font-size: 13px;
+        }
+        .monthly-detail-table th {
+            text-align: left;
+            padding: 6px 8px;
+            color: #888;
+            font-weight: 500;
+            text-transform: uppercase;
+            font-size: 10px;
+            letter-spacing: 0.5px;
+        }
+        .monthly-detail-table td {
+            padding: 6px 8px;
+            border-bottom: 1px solid #2c2c2c;
+        }
+        .monthly-detail-table tr:last-child td {
+            border-bottom: none;
+        }
     </style>
 </head>
 <body>
@@ -670,68 +818,76 @@ foreach (array_merge($grouped['goals']['new'], $grouped['goals']['in-progress'],
             <div class="sched-day">
                 <div class="sched-day-title" style="color:#64d2ff;">📅 MONDAY — 5:15 AM Wake</div>
                 <table class="sched-table">
-                    <tr><td style="width:60px;color:#888;">5:15</td><td style="color:#f0f0f0;font-weight:600;">Wake → Gym (legs/core)</td></tr>
+                    <tr><td style="width:60px;color:#888;">5:15</td><td style="color:#f0f0f0;font-weight:600;">Wake → GYM (legs/core)</td></tr>
                     <tr><td style="color:#888;">6:45</td><td style="color:#ccc;">Shower, dress</td></tr>
                     <tr><td style="color:#888;">7:00</td><td style="color:#f0f0f0;font-weight:600;">Family breakfast</td></tr>
-                    <tr><td style="color:#888;">9:00</td><td style="color:#ccc;">W-2 Block 1</td></tr>
+                    <tr><td style="color:#888;">7:30</td><td style="color:#ccc;">Daycare run</td></tr>
+                    <tr><td style="color:#888;">8:30</td><td style="color:#ccc;">W-2 Block 1</td></tr>
                     <tr><td style="color:#888;">12:00</td><td style="color:#f0f0f0;font-weight:600;">Family lunch</td></tr>
                     <tr><td style="color:#888;">1:15</td><td style="color:#ccc;">W-2 Block 2 + 6 PM meeting</td></tr>
                     <tr><td style="color:#888;">6:00</td><td style="color:#f0f0f0;font-weight:600;">Dinner + family</td></tr>
                     <tr><td style="color:#888;">7:00</td><td style="color:#f0f0f0;font-weight:600;">Kids bedtime</td></tr>
                     <tr><td style="color:#888;">8:00</td><td style="color:#f0f0f0;font-weight:600;">Wife time</td></tr>
-                    <tr><td style="color:#888;">9:30</td><td style="color:#ccc;">Bed</td></tr>
+                    <tr><td style="color:#888;">9:30</td><td style="color:#f0f0f0;font-weight:600;">Business Power Block</td></tr>
+                    <tr><td style="color:#888;">11:00</td><td style="color:#ccc;">Bed</td></tr>
                 </table>
             </div>
             <div class="sched-day">
                 <div class="sched-day-title" style="color:#ff9f0a;">🔥 TUESDAY — 5:15 AM Wake</div>
                 <table class="sched-table">
-                    <tr><td style="width:60px;color:#888;">5:15</td><td style="color:#f0f0f0;font-weight:600;">Wake → Business Window</td></tr>
+                    <tr><td style="width:60px;color:#888;">5:15</td><td style="color:#f0f0f0;font-weight:600;">Wake → GYM (push)</td></tr>
                     <tr><td style="color:#888;">6:45</td><td style="color:#ccc;">Shower, dress</td></tr>
                     <tr><td style="color:#888;">7:00</td><td style="color:#f0f0f0;font-weight:600;">Family breakfast</td></tr>
+                    <tr><td style="color:#888;">8:00</td><td style="color:#ccc;">Daycare run</td></tr>
                     <tr><td style="color:#888;">9:00</td><td style="color:#ccc;">W-2 Block 1</td></tr>
                     <tr><td style="color:#888;">12:00</td><td style="color:#f0f0f0;font-weight:600;">Family lunch</td></tr>
                     <tr><td style="color:#888;">1:15</td><td style="color:#ccc;">W-2 Block 2</td></tr>
                     <tr><td style="color:#888;">5:00</td><td style="color:#f0f0f0;font-weight:600;">Dinner + family</td></tr>
                     <tr><td style="color:#888;">7:00</td><td style="color:#f0f0f0;font-weight:600;">Kids bedtime</td></tr>
                     <tr><td style="color:#888;">8:00</td><td style="color:#f0f0f0;font-weight:600;">Wife time</td></tr>
-                    <tr><td style="color:#888;">9:30</td><td style="color:#ccc;">Bed</td></tr>
+                    <tr><td style="color:#888;">9:30</td><td style="color:#f0f0f0;font-weight:600;">Business Power Block</td></tr>
+                    <tr><td style="color:#888;">11:00</td><td style="color:#ccc;">Bed</td></tr>
                 </table>
             </div>
             <div class="sched-day">
-                <div class="sched-day-title" style="color:#ff9f0a;">🔥 WEDNESDAY — 5:15 AM Wake</div>
+                <div class="sched-day-title" style="color:#30d158;">🌿 WEDNESDAY — 5:15 AM Wake (Recovery)</div>
                 <table class="sched-table">
                     <tr><td style="width:60px;color:#888;">5:15</td><td style="color:#f0f0f0;font-weight:600;">Wake → Business Window</td></tr>
                     <tr><td style="color:#888;">6:45</td><td style="color:#ccc;">Shower, dress</td></tr>
                     <tr><td style="color:#888;">7:00</td><td style="color:#f0f0f0;font-weight:600;">Family breakfast</td></tr>
+                    <tr><td style="color:#888;">8:00</td><td style="color:#ccc;">Daycare run</td></tr>
                     <tr><td style="color:#888;">9:00</td><td style="color:#ccc;">W-2 Block 1</td></tr>
                     <tr><td style="color:#888;">12:00</td><td style="color:#f0f0f0;font-weight:600;">Family lunch</td></tr>
                     <tr><td style="color:#888;">1:15</td><td style="color:#ccc;">W-2 Block 2</td></tr>
                     <tr><td style="color:#888;">5:00</td><td style="color:#f0f0f0;font-weight:600;">Dinner + family</td></tr>
                     <tr><td style="color:#888;">7:00</td><td style="color:#f0f0f0;font-weight:600;">Kids bedtime</td></tr>
                     <tr><td style="color:#888;">8:00</td><td style="color:#f0f0f0;font-weight:600;">Wife time</td></tr>
-                    <tr><td style="color:#888;">9:30</td><td style="color:#ccc;">Bed</td></tr>
+                    <tr><td style="color:#888;">9:30</td><td style="color:#ccc;">Bed (early recovery)</td></tr>
                 </table>
             </div>
             <div class="sched-day">
-                <div class="sched-day-title" style="color:#ff453a;">🚨 THURSDAY — 5:15 AM Wake (Late Day)</div>
+                <div class="sched-day-title" style="color:#ff453a;">🚨 THURSDAY — 5:15 AM Wake</div>
                 <table class="sched-table">
-                    <tr><td style="width:60px;color:#888;">5:15</td><td style="color:#f0f0f0;font-weight:600;">Wake → Morning prep</td></tr>
+                    <tr><td style="width:60px;color:#888;">5:15</td><td style="color:#f0f0f0;font-weight:600;">Wake → GYM (pull)</td></tr>
+                    <tr><td style="color:#888;">6:45</td><td style="color:#ccc;">Shower, dress</td></tr>
                     <tr><td style="color:#888;">7:00</td><td style="color:#f0f0f0;font-weight:600;">Family breakfast</td></tr>
+                    <tr><td style="color:#888;">8:00</td><td style="color:#ccc;">Daycare run</td></tr>
                     <tr><td style="color:#888;">9:00</td><td style="color:#ccc;">W-2 Block 1</td></tr>
                     <tr><td style="color:#888;">12:00</td><td style="color:#f0f0f0;font-weight:600;">Family lunch</td></tr>
                     <tr><td style="color:#888;">1:15</td><td style="color:#ccc;">W-2 Block 2 + 6 PM meeting</td></tr>
                     <tr><td style="color:#888;">6:00</td><td style="color:#f0f0f0;font-weight:600;">Dinner + family</td></tr>
                     <tr><td style="color:#888;">7:00</td><td style="color:#f0f0f0;font-weight:600;">Kids bedtime</td></tr>
-                    <tr><td style="color:#888;">8:00</td><td style="color:#f0f0f0;font-weight:600;">GYM — evening session</td></tr>
+                    <tr><td style="color:#888;">8:00</td><td style="color:#f0f0f0;font-weight:600;">Wife time</td></tr>
                     <tr><td style="color:#888;">9:30</td><td style="color:#f0f0f0;font-weight:600;">Business Power Block</td></tr>
-                    <tr><td style="color:#888;">11:30</td><td style="color:#ccc;">Bed</td></tr>
+                    <tr><td style="color:#888;">11:00</td><td style="color:#ccc;">Bed</td></tr>
                 </table>
             </div>
             <div class="sched-day">
                 <div class="sched-day-title" style="color:#30d158;">😴 FRIDAY — 6:30 AM Wake (Sleep In)</div>
                 <table class="sched-table">
-                    <tr><td style="width:60px;color:#888;">6:30</td><td style="color:#f0f0f0;font-weight:600;">Wake → Sleep in</td></tr>
+                    <tr><td style="width:60px;color:#888;">6:30</td><td style="color:#f0f0f0;font-weight:600;">Wake → Family time</td></tr>
                     <tr><td style="color:#888;">7:00</td><td style="color:#f0f0f0;font-weight:600;">Family breakfast</td></tr>
+                    <tr><td style="color:#888;">8:00</td><td style="color:#ccc;">Daycare run</td></tr>
                     <tr><td style="color:#888;">9:00</td><td style="color:#ccc;">W-2 Block 1</td></tr>
                     <tr><td style="color:#888;">12:00</td><td style="color:#f0f0f0;font-weight:600;">Family lunch</td></tr>
                     <tr><td style="color:#888;">1:15</td><td style="color:#ccc;">W-2 Block 2</td></tr>
@@ -739,18 +895,42 @@ foreach (array_merge($grouped['goals']['new'], $grouped['goals']['in-progress'],
                     <tr><td style="color:#888;">7:00</td><td style="color:#f0f0f0;font-weight:600;">Kids bedtime</td></tr>
                     <tr><td style="color:#888;">8:00</td><td style="color:#f0f0f0;font-weight:600;">Wife time</td></tr>
                     <tr><td style="color:#888;">9:30</td><td style="color:#f0f0f0;font-weight:600;">Business Power Block</td></tr>
-                    <tr><td style="color:#888;">11:30</td><td style="color:#ccc;">Bed</td></tr>
+                    <tr><td style="color:#888;">11:00</td><td style="color:#ccc;">Bed</td></tr>
                 </table>
             </div>
             <div class="sched-overview">
                 <div style="font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:#ff9f0a;margin-bottom:12px;">Weekly Overview</div>
                 <table style="width:100%;border-collapse:collapse;font-size:13px;">
-                    <tr><td style="padding:6px 8px;border-bottom:1px solid #1f1f1f;color:#888;">Business</td><td style="padding:6px 8px;border-bottom:1px solid #1f1f1f;color:#f0f0f0;font-weight:600;">Tue/Wed 5:30–6:45 AM + Thu/Fri 9:30–11:30 PM (6.5h)</td></tr>
-                    <tr><td style="padding:6px 8px;border-bottom:1px solid #1f1f1f;color:#888;">Gym</td><td style="padding:6px 8px;border-bottom:1px solid #1f1f1f;color:#f0f0f0;font-weight:600;">Mon 5:30 AM + Thu 8:00 PM (3h)</td></tr>
+                    <tr><td style="padding:6px 8px;border-bottom:1px solid #1f1f1f;color:#888;">Business</td><td style="padding:6px 8px;border-bottom:1px solid #1f1f1f;color:#f0f0f0;font-weight:600;">Wed 5:15–6:45 AM + Mon/Tue/Thu/Fri 9:30–11:00 PM</td></tr>
+                    <tr><td style="padding:6px 8px;border-bottom:1px solid #1f1f1f;color:#888;">Gym</td><td style="padding:6px 8px;border-bottom:1px solid #1f1f1f;color:#f0f0f0;font-weight:600;">Mon/Tue/Thu 5:15 AM — legs/core, push, pull</td></tr>
                     <tr><td style="padding:6px 8px;border-bottom:1px solid #1f1f1f;color:#888;">W-2</td><td style="padding:6px 8px;border-bottom:1px solid #1f1f1f;color:#ccc;">43 hours</td></tr>
                     <tr><td style="padding:6px 8px;border-bottom:1px solid #1f1f1f;color:#888;">Family</td><td style="padding:6px 8px;border-bottom:1px solid #1f1f1f;color:#ccc;">28.75 hours</td></tr>
                     <tr><td style="padding:6px 8px;color:#888;">Reddit</td><td style="padding:6px 8px;color:#ccc;">After 9 PM (Mon–Wed/Fri) — 30 min max</td></tr>
                 </table>
+            </div>
+        </div>
+        <!-- Yearly KPI -->
+        <div class="yearly-kpi">
+            <div class="yearly-kpi-header">
+                <div class="yearly-kpi-title">🎯 Yearly Income Goal</div>
+                <div style="font-size: 12px; color: #888;">Target: $<?php echo number_format($annualGoal); ?></div>
+            </div>
+            <div class="yearly-kpi-stats">
+                <div class="yearly-kpi-stat">
+                    <div class="value">$<?php echo number_format($yearlyTotal); ?></div>
+                    <div class="label">Earned</div>
+                </div>
+                <div class="yearly-kpi-stat">
+                    <div class="value">$<?php echo number_format($annualGoal - $yearlyTotal); ?></div>
+                    <div class="label">Remaining</div>
+                </div>
+                <div class="yearly-kpi-stat">
+                    <div class="value"><?php echo $yearlyPct; ?>%</div>
+                    <div class="label">Complete</div>
+                </div>
+            </div>
+            <div class="yearly-progress-bar">
+                <div class="yearly-progress-fill" style="width: <?php echo $yearlyPct; ?>%" data-pct="<?php echo $yearlyPct; ?>"></div>
             </div>
         </div>
 
@@ -822,6 +1002,38 @@ foreach (array_merge($grouped['goals']['new'], $grouped['goals']['in-progress'],
                 </tbody>
             </table>
             <?php endif; ?>
+
+            <!-- Monthly Breakdown Dropdown -->
+            <div class="monthly-dropdown">
+                <select onchange="showMonth(this.value)">
+                    <option value="">-- Select Month --</option>
+                    <?php foreach ($monthlyData as $ym => $mdata): ?>
+                    <option value="month-<?php echo $ym; ?>"><?php echo date('F Y', strtotime($ym . '-01')); ?> — $<?php echo number_format($mdata['total'], 2); ?></option>
+                    <?php endforeach; ?>
+                </select>
+                <?php foreach ($monthlyData as $ym => $mdata): ?>
+                <div id="month-<?php echo $ym; ?>" class="monthly-detail">
+                    <div class="monthly-detail-header">
+                        <div style="font-weight: 600; font-size: 14px;"><?php echo date('F Y', strtotime($ym . '-01')); ?></div>
+                        <div class="monthly-detail-total">$<?php echo number_format($mdata['total'], 2); ?></div>
+                    </div>
+                    <table class="monthly-detail-table">
+                        <thead>
+                            <tr><th>Date</th><th>Amount</th><th>Source</th></tr>
+                        </thead>
+                        <tbody>
+                            <?php foreach ($mdata['entries'] as $e): ?>
+                            <tr>
+                                <td><?php echo htmlspecialchars($e['date']); ?></td>
+                                <td>$<?php echo number_format(floatval($e['amount']), 2); ?></td>
+                                <td><?php echo htmlspecialchars($e['source'] ?? ''); ?></td>
+                            </tr>
+                            <?php endforeach; ?>
+                        </tbody>
+                    </table>
+                </div>
+                <?php endforeach; ?>
+            </div>
         </div>
 
         <!-- Goals (Schedule tab) -->
@@ -1357,9 +1569,17 @@ foreach (array_merge($grouped['goals']['new'], $grouped['goals']['in-progress'],
         function showToast(msg, isError = false) {
             const t = document.getElementById('toast');
             t.textContent = msg;
-            t.className = 'toast' + (isError ? ' error' : '');
+            t.className = isError ? 'toast error' : 'toast';
             t.style.display = 'block';
             setTimeout(() => t.style.display = 'none', 2500);
+        }
+
+        function showMonth(monthId) {
+            document.querySelectorAll('.monthly-detail').forEach(el => el.classList.remove('active'));
+            if (monthId) {
+                const el = document.getElementById(monthId);
+                if (el) el.classList.add('active');
+            }
         }
 
         document.getElementById('modal').addEventListener('click', function(e) {

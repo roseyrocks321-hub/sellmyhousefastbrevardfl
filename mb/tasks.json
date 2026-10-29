@@ -1,0 +1,674 @@
+{
+  "version": "2.1",
+  "lastUpdated": "2026-10-28",
+  "tasks": [
+    {
+      "id": "re-101",
+      "title": "LinkedIn Bot: Monitor sentinel (inbound auto-reply)",
+      "category": "real-estate",
+      "status": "in-progress",
+      "priority": "high",
+      "notes": "Sentinel watches messaging 7am-11pm, auto-replies from playbook. 44 leads in DB. SEARCH BATCHES PAUSED \u2014 user stopped hunt at 102 leads. Messenger paused until rate limit reset.",
+      "order": 0,
+      "created": "2026-10-28",
+      "updated": "2026-10-28"
+    },
+    {
+      "id": "re-102",
+      "title": "LinkedIn Bot: Complete Persona C (developer T-chart)",
+      "category": "real-estate",
+      "status": "new",
+      "priority": "high",
+      "notes": "Devin 12-unit infill scenario. Options A/B/C presented, not picked. Add to messaging-playbook.md.",
+      "order": 1,
+      "created": "2026-10-28",
+      "updated": "2026-10-28"
+    },
+    {
+      "id": "re-103",
+      "title": "LinkedIn Bot: Add call-booking template row",
+      "category": "real-estate",
+      "status": "new",
+      "priority": "high",
+      "notes": "Positive acceptances match no row; engine HOLDs them. Every won conversation ends in a booked call.",
+      "order": 2,
+      "created": "2026-10-28",
+      "updated": "2026-10-28"
+    },
+    {
+      "id": "re-104",
+      "title": "LinkedIn Bot: Modernize send (connection requests)",
+      "category": "real-estate",
+      "status": "new",
+      "priority": "medium",
+      "notes": "Still uses pre-obfuscation selectors. Dry-run before launching outreach to 73 leads.",
+      "order": 3,
+      "created": "2026-10-28",
+      "updated": "2026-10-28"
+    },
+    {
+      "id": "re-105",
+      "title": "CV3 Lending: Confirm seasoning timeline (playbook row 14)",
+      "category": "real-estate",
+      "status": "new",
+      "priority": "medium",
+      "notes": "Delayed-purchase refis \u2014 confirm exact seasoning requirement.",
+      "order": 4,
+      "created": "2026-10-28",
+      "updated": "2026-10-28"
+    },
+    {
+      "id": "re-106",
+      "title": "CV3 Lending: Confirm STR conditions (playbook row 12)",
+      "category": "real-estate",
+      "status": "new",
+      "priority": "medium",
+      "notes": "12-month statements vs market rent \u2014 which applies?",
+      "order": 5,
+      "created": "2026-10-28",
+      "updated": "2026-10-28"
+    },
+    {
+      "id": "re-107",
+      "title": "Follow up warm/dead leads from CRM",
+      "category": "real-estate",
+      "status": "new",
+      "priority": "high",
+      "notes": "Use GHL AI Voice for automated follow-up sequences.",
+      "order": 6,
+      "created": "2026-10-28",
+      "updated": "2026-10-28"
+    },
+    {
+      "id": "re-108",
+      "title": "Call 50 warm leads: 12/week (4/day x 3 days)",
+      "category": "real-estate",
+      "status": "new",
+      "priority": "high",
+      "notes": "Last 90 days interest. Goal: re-engage, qualify, set appointment. Use GHL to track touchpoints. Proven $20K result.",
+      "order": 7,
+      "created": "2026-10-28",
+      "updated": "2026-10-28"
+    },
+    {
+      "id": "re-109",
+      "title": "Set up AI voice outbound for 150 cold leads in GHL",
+      "category": "real-estate",
+      "status": "new",
+      "priority": "high",
+      "notes": "GHL AI Voice outbound campaign. Script: quick qualification + appointment setting. Segment by lead source/age.",
+      "order": 8,
+      "created": "2026-10-28",
+      "updated": "2026-10-28"
+    },
+    {
+      "id": "re-110",
+      "title": "Audit + fix lead forms on all 3 sites",
+      "category": "real-estate",
+      "status": "new",
+      "priority": "high",
+      "notes": "Verify form submission endpoints, confirmation messages, and GHL webhook routing. Every city page must have working CTA.",
+      "order": 9,
+      "created": "2026-10-28",
+      "updated": "2026-10-28"
+    },
+    {
+      "id": "re-111",
+      "title": "Configure GHL AI agent for intake + qualification",
+      "category": "real-estate",
+      "status": "new",
+      "priority": "high",
+      "notes": "Speed-to-lead automation. AI answers calls, asks qualification questions (timeline, condition, motivation), books appointment.",
+      "order": 10,
+      "created": "2026-10-28",
+      "updated": "2026-10-28"
+    },
+    {
+      "id": "seo-101",
+      "title": "GBP Poster: 18 pending posts through 12/31",
+      "category": "seo",
+      "status": "in-progress",
+      "priority": "high",
+      "notes": "Daemon armed, fires ~7:05 AM daily. 7 posted, 18 pending through 12/31. Content-safe filter active. Restriction lifted Oct 27.",
+      "order": 0,
+      "created": "2026-10-28",
+      "updated": "2026-10-28"
+    },
+    {
+      "id": "seo-102",
+      "title": "Blog Publisher: Execute Q4 schedule",
+      "category": "seo",
+      "status": "in-progress",
+      "priority": "high",
+      "notes": "Cocoa Mon, Brevard Tue, GTR Wed. 13 queued posts drafted. Next: Cocoa Oct 30, Brevard Nov 3.",
+      "order": 1,
+      "created": "2026-10-28",
+      "updated": "2026-10-28"
+    },
+    {
+      "id": "seo-103",
+      "title": "Blog Publisher: Fix Cocoa site-wide nav (extensionless URLs)",
+      "category": "seo",
+      "status": "new",
+      "priority": "high",
+      "notes": "Every extensionless nav href 404s. Fix: .htaccess rewrite or bulk FTP re-upload.",
+      "order": 2,
+      "created": "2026-10-28",
+      "updated": "2026-10-28"
+    },
+    {
+      "id": "seo-104",
+      "title": "Freshness Job: Add FRESHNESS markers to 6 Brevard pages",
+      "category": "seo",
+      "status": "new",
+      "priority": "medium",
+      "notes": "Pages skipped without markers. Snippet in ~/hermes-scripts/freshness/README.md.",
+      "order": 3,
+      "created": "2026-10-28",
+      "updated": "2026-10-28"
+    },
+    {
+      "id": "seo-105",
+      "title": "Directory Packets: Paste real GBP street address + regenerate",
+      "category": "seo",
+      "status": "new",
+      "priority": "medium",
+      "notes": "Packets carry {{ADDRESS_FROM_GBP}} placeholder. Must match GBP exactly before submitting.",
+      "order": 4,
+      "created": "2026-10-28",
+      "updated": "2026-10-28"
+    },
+    {
+      "id": "seo-106",
+      "title": "HARO: Grant Terminal\u2192Mail automation permission",
+      "category": "seo",
+      "status": "new",
+      "priority": "medium",
+      "notes": "System Settings \u2192 Privacy & Security \u2192 Automation. Error -1743 until granted.",
+      "order": 5,
+      "created": "2026-10-28",
+      "updated": "2026-10-28"
+    },
+    {
+      "id": "seo-107",
+      "title": "Request GSC indexing for new blog posts + city pages",
+      "category": "seo",
+      "status": "new",
+      "priority": "medium",
+      "notes": "Speeds up ranking. Batch submit after each publish.",
+      "order": 6,
+      "created": "2026-10-28",
+      "updated": "2026-10-28"
+    },
+    {
+      "id": "seo-108",
+      "title": "SEO Flipper: Add real deal photos to 13 city pages",
+      "category": "seo",
+      "status": "completed",
+      "priority": "high",
+      "notes": "COMPLETED Oct 22 \u2014 all 13 Brevard city pages have real hero photos + inline images. 125 additional photos now curated for portfolio + blog use.",
+      "order": 7,
+      "created": "2026-10-28",
+      "updated": "2026-10-28"
+    },
+    {
+      "id": "seo-109",
+      "title": "SEO Flipper: Build /our-deals/ portfolio page (6 properties)",
+      "category": "seo",
+      "status": "in-progress",
+      "priority": "high",
+      "notes": "User requested Oct 24. Tampa-style grid drafted. 125 photos curated across 6 properties. Waiting on final photo selection + descriptions before deploy.",
+      "order": 8,
+      "created": "2026-10-28",
+      "updated": "2026-10-28"
+    },
+    {
+      "id": "seo-110",
+      "title": "SEO Flipper: Create video content from property footage",
+      "category": "seo",
+      "status": "new",
+      "priority": "high",
+      "notes": "Videos organized for 6 properties. Need: 30-sec reel cuts, YouTube embeds, GBP video posts. No seller testimonials yet.",
+      "order": 9,
+      "created": "2026-10-28",
+      "updated": "2026-10-28"
+    },
+    {
+      "id": "seo-111",
+      "title": "SEO Flipper: Write 3 pain-point blog posts (foreclosure, probate, tired landlord)",
+      "category": "seo",
+      "status": "new",
+      "priority": "medium",
+      "notes": "Hot lead funnels. Someone Googling 'stop foreclosure brevard' is a motivated seller.",
+      "order": 10,
+      "created": "2026-10-28",
+      "updated": "2026-10-28"
+    },
+    {
+      "id": "seo-112",
+      "title": "SEO Flipper: Add verifiable address to GTR + Brevard footers",
+      "category": "seo",
+      "status": "new",
+      "priority": "high",
+      "notes": "3682 N Wickham Rd, B1-271, Melbourne, FL 32935. Already on Cocoa. Real address = #1 local trust signal.",
+      "order": 11,
+      "created": "2026-10-28",
+      "updated": "2026-10-28"
+    },
+    {
+      "id": "seo-113",
+      "title": "SEO Flipper: Outreach to 5 divorce + 5 probate attorneys",
+      "category": "seo",
+      "status": "new",
+      "priority": "medium",
+      "notes": "Referral funnel. Attorneys control motivated sellers. One meeting = deal flow for years.",
+      "order": 12,
+      "created": "2026-10-28",
+      "updated": "2026-10-28"
+    },
+    {
+      "id": "seo-114",
+      "title": "SEO Flipper: Seed 5 Q&As on GBP (both listings)",
+      "category": "seo",
+      "status": "new",
+      "priority": "medium",
+      "notes": "'Do you buy houses in Melbourne?' 'How fast can you close?' Pre-populate with keyword-rich answers.",
+      "order": 13,
+      "created": "2026-10-28",
+      "updated": "2026-10-28"
+    },
+    {
+      "id": "ca-101",
+      "title": "W-2: Maintain 43-hour week + commission targets",
+      "category": "career",
+      "status": "in-progress",
+      "priority": "high",
+      "notes": "",
+      "order": 0,
+      "created": "2026-10-28",
+      "updated": "2026-10-28"
+    },
+    {
+      "id": "ca-102",
+      "title": "REI Meetup: Plan Q4 hard money networking event",
+      "category": "career",
+      "status": "new",
+      "priority": "medium",
+      "notes": "Leverage 30-member Meetup group. Quarterly HML + wholesaler connections.",
+      "order": 1,
+      "created": "2026-10-28",
+      "updated": "2026-10-28"
+    },
+    {
+      "id": "pe-101",
+      "title": "Mulch",
+      "category": "personal",
+      "status": "new",
+      "priority": "low",
+      "notes": "Honey-do item.",
+      "order": 0,
+      "created": "2026-10-28",
+      "updated": "2026-10-28"
+    },
+    {
+      "id": "pe-102",
+      "title": "Schedule Charlotte landscape follow-up (if still open)",
+      "category": "personal",
+      "status": "new",
+      "priority": "low",
+      "notes": "Cristian connect.",
+      "order": 1,
+      "created": "2026-10-28",
+      "updated": "2026-10-28"
+    },
+    {
+      "id": "go-101",
+      "title": "\ud83d\udcaa Health: Wake 5:15 AM Mon\u2013Thu, 6:30 AM Fri",
+      "category": "goals",
+      "status": "in-progress",
+      "priority": "high",
+      "notes": "Foundation of sacred morning block. Gym Mon/Tue/Thu 5:15 AM.",
+      "order": 0,
+      "created": "2026-10-28",
+      "updated": "2026-10-28"
+    },
+    {
+      "id": "go-102",
+      "title": "\ud83d\udcaa Health: Wind down by 9:00 PM, asleep by 9:30 PM",
+      "category": "goals",
+      "status": "new",
+      "priority": "high",
+      "notes": "Makes 5:15 AM sustainable.",
+      "order": 1,
+      "created": "2026-10-28",
+      "updated": "2026-10-28"
+    },
+    {
+      "id": "go-103",
+      "title": "\ud83d\udc68\u200d\ud83d\udc69\u200d\ud83d\udc67 Family: Protect sacred blocks (7\u20138 AM breakfast, 5\u20138 PM evening)",
+      "category": "goals",
+      "status": "in-progress",
+      "priority": "high",
+      "notes": "Boundaries protect family time.",
+      "order": 2,
+      "created": "2026-10-28",
+      "updated": "2026-10-28"
+    },
+    {
+      "id": "go-104",
+      "title": "\ud83d\udcb0 Income: Close 20 wholesale deals in 3 years ($300K net @ $15K avg)",
+      "category": "goals",
+      "status": "in-progress",
+      "priority": "high",
+      "notes": "SEO + sales funnel driven. 50 warm leads = manual follow-up (12/week). 150 cold leads = AI voice outbound. Track monthly deal count and avg assignment fee.",
+      "order": 3,
+      "created": "2026-10-28",
+      "updated": "2026-10-28"
+    },
+    {
+      "id": "go-105",
+      "title": "\ud83d\udcb0 Income: Hit $100K annual goal (track via MB KPI)",
+      "category": "goals",
+      "status": "in-progress",
+      "priority": "high",
+      "notes": "Yearly progress bar live on Schedule tab. Review monthly.",
+      "order": 4,
+      "created": "2026-10-28",
+      "updated": "2026-10-28"
+    },
+    {
+      "id": "go-106",
+      "title": "\ud83d\udcb0 Income: Close 1 wholesale deal in Q4 2026",
+      "category": "goals",
+      "status": "new",
+      "priority": "high",
+      "notes": "Direct revenue. 3 lead calls/day target + warm lead blitz.",
+      "order": 5,
+      "created": "2026-10-28",
+      "updated": "2026-10-28"
+    },
+    {
+      "id": "ro-101",
+      "title": "Deliver accurate morning brief by 5:05 AM",
+      "category": "rosey",
+      "status": "new",
+      "priority": "high",
+      "notes": "Markets, sports, rates, weather. No delays.",
+      "order": 0,
+      "created": "2026-10-28",
+      "updated": "2026-10-28"
+    },
+    {
+      "id": "ro-102",
+      "title": "Maintain martin-profile.md after every work session",
+      "category": "rosey",
+      "status": "new",
+      "priority": "high",
+      "notes": "Prevent stale data. Profile is source of truth.",
+      "order": 1,
+      "created": "2026-10-28",
+      "updated": "2026-10-28"
+    },
+    {
+      "id": "ro-103",
+      "title": "Push MB updates via FTP within 5 min of request",
+      "category": "rosey",
+      "status": "new",
+      "priority": "high",
+      "notes": "Direct server sync only.",
+      "order": 2,
+      "created": "2026-10-28",
+      "updated": "2026-10-28"
+    },
+    {
+      "id": "ro-104",
+      "title": "Track and report daily token usage accurately",
+      "category": "rosey",
+      "status": "new",
+      "priority": "medium",
+      "notes": "Use correct model pricing (k2.6 @ $0.95/$4.00).",
+      "order": 3,
+      "created": "2026-10-28",
+      "updated": "2026-10-28"
+    }
+  ],
+  "income": {
+    "enabled": true,
+    "monthlyTarget": 10000,
+    "entries": [
+      {
+        "date": "2026-01-30",
+        "amount": 20000.0,
+        "source": "Wholesale deal #1"
+      },
+      {
+        "date": "2026-05-08",
+        "amount": 1995.13,
+        "source": "Paycheck 1 - May"
+      },
+      {
+        "date": "2026-05-22",
+        "amount": 2072.63,
+        "source": "Paycheck 2 - May"
+      },
+      {
+        "date": "2026-05-30",
+        "amount": 900.0,
+        "source": "Pavers job"
+      },
+      {
+        "date": "2026-06-05",
+        "amount": 2063.08,
+        "source": "Paycheck 1 - June"
+      },
+      {
+        "date": "2026-06-18",
+        "amount": 2304.84,
+        "source": "Paycheck 2 - June"
+      },
+      {
+        "date": "2026-07-02",
+        "amount": 2481.86,
+        "source": "Paycheck 1 - July"
+      },
+      {
+        "date": "2026-07-16",
+        "amount": 2648.77,
+        "source": "Paycheck 2 - July"
+      },
+      {
+        "date": "2026-07-17",
+        "amount": 409.58,
+        "source": "Q2 KPI"
+      },
+      {
+        "date": "2026-07-31",
+        "amount": 2647.91,
+        "source": "3rd check for July (W2)"
+      },
+      {
+        "date": "2026-08-13",
+        "amount": 1000.0,
+        "source": "Options net profit withdraw"
+      },
+      {
+        "date": "2026-08-14",
+        "amount": 4293.33,
+        "source": "Paycheck 1 - Aug"
+      },
+      {
+        "date": "2026-08-28",
+        "amount": 2592.54,
+        "source": "Paycheck 2 - Aug"
+      },
+      {
+        "date": "2026-09-11",
+        "amount": 2183.3,
+        "source": "Paycheck 1 - Sep"
+      },
+      {
+        "date": "2026-09-25",
+        "amount": 3019.53,
+        "source": "Paycheck 2 - Sep"
+      },
+      {
+        "date": "2026-10-09",
+        "amount": 2594.83,
+        "source": "Paycheck 1 - Oct"
+      },
+      {
+        "date": "2026-10-23",
+        "amount": 3108.15,
+        "source": "Paycheck 2 - Oct"
+      },
+      {
+        "date": "2026-10-23",
+        "amount": 1171.41,
+        "source": "Paycheck 2 - Oct BONUS"
+      },
+      {
+        "date": "2026-07-31",
+        "amount": 2647.91,
+        "source": "3rd check for July (w2)"
+      }
+    ],
+    "annualGoal": 100000
+  },
+  "yearlyKpi": {
+    "annualGoal": 100000,
+    "currentTotal": 60134.8,
+    "progressPercent": 60.1,
+    "months": {
+      "2026-01": {
+        "total": 20000.0,
+        "entries": [
+          {
+            "date": "2026-01-30",
+            "amount": 20000.0,
+            "source": "Wholesale deal #1"
+          }
+        ]
+      },
+      "2026-05": {
+        "total": 4967.76,
+        "entries": [
+          {
+            "date": "2026-05-08",
+            "amount": 1995.13,
+            "source": "Paycheck 1 - May"
+          },
+          {
+            "date": "2026-05-22",
+            "amount": 2072.63,
+            "source": "Paycheck 2 - May"
+          },
+          {
+            "date": "2026-05-30",
+            "amount": 900.0,
+            "source": "Pavers job"
+          }
+        ]
+      },
+      "2026-06": {
+        "total": 4367.92,
+        "entries": [
+          {
+            "date": "2026-06-05",
+            "amount": 2063.08,
+            "source": "Paycheck 1 - June"
+          },
+          {
+            "date": "2026-06-18",
+            "amount": 2304.84,
+            "source": "Paycheck 2 - June"
+          }
+        ]
+      },
+      "2026-07": {
+        "total": 10836.029999999999,
+        "entries": [
+          {
+            "date": "2026-07-02",
+            "amount": 2481.86,
+            "source": "Paycheck 1 - July"
+          },
+          {
+            "date": "2026-07-16",
+            "amount": 2648.77,
+            "source": "Paycheck 2 - July"
+          },
+          {
+            "date": "2026-07-17",
+            "amount": 409.58,
+            "source": "Q2 KPI"
+          },
+          {
+            "date": "2026-07-31",
+            "amount": 2647.91,
+            "source": "3rd check for July (W2)"
+          },
+          {
+            "date": "2026-07-31",
+            "amount": 2647.91,
+            "source": "3rd check for July (w2)"
+          }
+        ]
+      },
+      "2026-08": {
+        "total": 7885.87,
+        "entries": [
+          {
+            "date": "2026-08-13",
+            "amount": 1000.0,
+            "source": "Options net profit withdraw"
+          },
+          {
+            "date": "2026-08-14",
+            "amount": 4293.33,
+            "source": "Paycheck 1 - Aug"
+          },
+          {
+            "date": "2026-08-28",
+            "amount": 2592.54,
+            "source": "Paycheck 2 - Aug"
+          }
+        ]
+      },
+      "2026-09": {
+        "total": 5202.83,
+        "entries": [
+          {
+            "date": "2026-09-11",
+            "amount": 2183.3,
+            "source": "Paycheck 1 - Sep"
+          },
+          {
+            "date": "2026-09-25",
+            "amount": 3019.53,
+            "source": "Paycheck 2 - Sep"
+          }
+        ]
+      },
+      "2026-10": {
+        "total": 6874.389999999999,
+        "entries": [
+          {
+            "date": "2026-10-09",
+            "amount": 2594.83,
+            "source": "Paycheck 1 - Oct"
+          },
+          {
+            "date": "2026-10-23",
+            "amount": 3108.15,
+            "source": "Paycheck 2 - Oct"
+          },
+          {
+            "date": "2026-10-23",
+            "amount": 1171.41,
+            "source": "Paycheck 2 - Oct BONUS"
+          }
+        ]
+      }
+    }
+  }
+}
