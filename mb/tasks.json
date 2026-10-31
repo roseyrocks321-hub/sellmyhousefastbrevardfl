@@ -1,444 +1,870 @@
 {
   "version": "2.1",
-  "lastUpdated": "2026-10-28",
+  "lastUpdated": "2026-10-27",
   "tasks": [
     {
-      "id": "re-101",
-      "title": "LinkedIn Bot: Monitor sentinel (inbound auto-reply)",
-      "category": "real-estate",
-      "status": "in-progress",
-      "priority": "high",
-      "notes": "Sentinel watches messaging 7am-11pm, auto-replies from playbook. 44 leads in DB. SEARCH BATCHES PAUSED \u2014 user stopped hunt at 102 leads. Messenger paused until rate limit reset.",
-      "order": 0,
-      "created": "2026-10-28",
-      "updated": "2026-10-28"
-    },
-    {
-      "id": "re-102",
-      "title": "LinkedIn Bot: Complete Persona C (developer T-chart)",
-      "category": "real-estate",
-      "status": "new",
-      "priority": "high",
-      "notes": "Devin 12-unit infill scenario. Options A/B/C presented, not picked. Add to messaging-playbook.md.",
-      "order": 1,
-      "created": "2026-10-28",
-      "updated": "2026-10-28"
-    },
-    {
-      "id": "re-103",
-      "title": "LinkedIn Bot: Add call-booking template row",
-      "category": "real-estate",
-      "status": "new",
-      "priority": "high",
-      "notes": "Positive acceptances match no row; engine HOLDs them. Every won conversation ends in a booked call.",
-      "order": 2,
-      "created": "2026-10-28",
-      "updated": "2026-10-28"
-    },
-    {
-      "id": "re-104",
-      "title": "LinkedIn Bot: Modernize send (connection requests)",
-      "category": "real-estate",
-      "status": "new",
-      "priority": "medium",
-      "notes": "Still uses pre-obfuscation selectors. Dry-run before launching outreach to 73 leads.",
-      "order": 3,
-      "created": "2026-10-28",
-      "updated": "2026-10-28"
-    },
-    {
-      "id": "re-105",
-      "title": "CV3 Lending: Confirm seasoning timeline (playbook row 14)",
-      "category": "real-estate",
-      "status": "new",
-      "priority": "medium",
-      "notes": "Delayed-purchase refis \u2014 confirm exact seasoning requirement.",
-      "order": 4,
-      "created": "2026-10-28",
-      "updated": "2026-10-28"
-    },
-    {
-      "id": "re-106",
-      "title": "CV3 Lending: Confirm STR conditions (playbook row 12)",
-      "category": "real-estate",
-      "status": "new",
-      "priority": "medium",
-      "notes": "12-month statements vs market rent \u2014 which applies?",
-      "order": 5,
-      "created": "2026-10-28",
-      "updated": "2026-10-28"
-    },
-    {
-      "id": "re-107",
-      "title": "Follow up warm/dead leads from CRM",
-      "category": "real-estate",
-      "status": "new",
-      "priority": "high",
-      "notes": "Use GHL AI Voice for automated follow-up sequences.",
-      "order": 6,
-      "created": "2026-10-28",
-      "updated": "2026-10-28"
-    },
-    {
-      "id": "re-108",
-      "title": "Call 50 warm leads: 12/week (4/day x 3 days)",
-      "category": "real-estate",
-      "status": "new",
-      "priority": "high",
-      "notes": "Last 90 days interest. Goal: re-engage, qualify, set appointment. Use GHL to track touchpoints. Proven $20K result.",
-      "order": 7,
-      "created": "2026-10-28",
-      "updated": "2026-10-28"
-    },
-    {
-      "id": "re-109",
-      "title": "Set up AI voice outbound for 150 cold leads in GHL",
-      "category": "real-estate",
-      "status": "new",
-      "priority": "high",
-      "notes": "GHL AI Voice outbound campaign. Script: quick qualification + appointment setting. Segment by lead source/age.",
-      "order": 8,
-      "created": "2026-10-28",
-      "updated": "2026-10-28"
-    },
-    {
-      "id": "re-110",
-      "title": "Audit + fix lead forms on all 3 sites",
-      "category": "real-estate",
-      "status": "new",
-      "priority": "high",
-      "notes": "Verify form submission endpoints, confirmation messages, and GHL webhook routing. Every city page must have working CTA.",
-      "order": 9,
-      "created": "2026-10-28",
-      "updated": "2026-10-28"
-    },
-    {
-      "id": "re-111",
-      "title": "Configure GHL AI agent for intake + qualification",
-      "category": "real-estate",
-      "status": "new",
-      "priority": "high",
-      "notes": "Speed-to-lead automation. AI answers calls, asks qualification questions (timeline, condition, motivation), books appointment.",
-      "order": 10,
-      "created": "2026-10-28",
-      "updated": "2026-10-28"
-    },
-    {
-      "id": "seo-101",
-      "title": "GBP Poster: 18 pending posts through 12/31",
-      "category": "seo",
-      "status": "in-progress",
-      "priority": "high",
-      "notes": "Daemon armed, fires ~7:05 AM daily. 7 posted, 18 pending through 12/31. Content-safe filter active. Restriction lifted Oct 27.",
-      "order": 0,
-      "created": "2026-10-28",
-      "updated": "2026-10-28"
-    },
-    {
-      "id": "seo-102",
-      "title": "Blog Publisher: Execute Q4 schedule",
-      "category": "seo",
-      "status": "in-progress",
-      "priority": "high",
-      "notes": "Cocoa Mon, Brevard Tue, GTR Wed. 13 queued posts drafted. Next: Cocoa Oct 30, Brevard Nov 3.",
-      "order": 1,
-      "created": "2026-10-28",
-      "updated": "2026-10-28"
-    },
-    {
-      "id": "seo-103",
-      "title": "Blog Publisher: Fix Cocoa site-wide nav (extensionless URLs)",
-      "category": "seo",
-      "status": "new",
-      "priority": "high",
-      "notes": "Every extensionless nav href 404s. Fix: .htaccess rewrite or bulk FTP re-upload.",
-      "order": 2,
-      "created": "2026-10-28",
-      "updated": "2026-10-28"
-    },
-    {
-      "id": "seo-104",
-      "title": "Freshness Job: Add FRESHNESS markers to 6 Brevard pages",
-      "category": "seo",
-      "status": "new",
-      "priority": "medium",
-      "notes": "Pages skipped without markers. Snippet in ~/hermes-scripts/freshness/README.md.",
-      "order": 3,
-      "created": "2026-10-28",
-      "updated": "2026-10-28"
-    },
-    {
-      "id": "seo-105",
-      "title": "Directory Packets: Paste real GBP street address + regenerate",
-      "category": "seo",
-      "status": "new",
-      "priority": "medium",
-      "notes": "Packets carry {{ADDRESS_FROM_GBP}} placeholder. Must match GBP exactly before submitting.",
-      "order": 4,
-      "created": "2026-10-28",
-      "updated": "2026-10-28"
-    },
-    {
-      "id": "seo-106",
-      "title": "HARO: Grant Terminal\u2192Mail automation permission",
-      "category": "seo",
-      "status": "new",
-      "priority": "medium",
-      "notes": "System Settings \u2192 Privacy & Security \u2192 Automation. Error -1743 until granted.",
-      "order": 5,
-      "created": "2026-10-28",
-      "updated": "2026-10-28"
-    },
-    {
-      "id": "seo-107",
-      "title": "Request GSC indexing for new blog posts + city pages",
-      "category": "seo",
-      "status": "new",
-      "priority": "medium",
-      "notes": "Speeds up ranking. Batch submit after each publish.",
-      "order": 6,
-      "created": "2026-10-28",
-      "updated": "2026-10-28"
-    },
-    {
-      "id": "seo-108",
-      "title": "SEO Flipper: Add real deal photos to 13 city pages",
+      "id": "re-1",
+      "title": "Upload 13 city pages to sellmyhousefastbrevardfl.com",
       "category": "seo",
       "status": "completed",
       "priority": "high",
-      "notes": "COMPLETED Oct 22 \u2014 all 13 Brevard city pages have real hero photos + inline images. 125 additional photos now curated for portfolio + blog use.",
-      "order": 7,
-      "created": "2026-10-28",
-      "updated": "2026-10-28"
-    },
-    {
-      "id": "seo-109",
-      "title": "SEO Flipper: Build /our-deals/ portfolio page (6 properties)",
-      "category": "seo",
-      "status": "in-progress",
-      "priority": "high",
-      "notes": "User requested Oct 24. Tampa-style grid drafted. 125 photos curated across 6 properties. Waiting on final photo selection + descriptions before deploy.",
-      "order": 8,
-      "created": "2026-10-28",
-      "updated": "2026-10-28"
-    },
-    {
-      "id": "seo-110",
-      "title": "SEO Flipper: Create video content from property footage",
-      "category": "seo",
-      "status": "new",
-      "priority": "high",
-      "notes": "Videos organized for 6 properties. Need: 30-sec reel cuts, YouTube embeds, GBP video posts. No seller testimonials yet.",
-      "order": 9,
-      "created": "2026-10-28",
-      "updated": "2026-10-28"
-    },
-    {
-      "id": "seo-111",
-      "title": "SEO Flipper: Write 3 pain-point blog posts (foreclosure, probate, tired landlord)",
-      "category": "seo",
-      "status": "new",
-      "priority": "medium",
-      "notes": "Hot lead funnels. Someone Googling 'stop foreclosure brevard' is a motivated seller.",
-      "order": 10,
-      "created": "2026-10-28",
-      "updated": "2026-10-28"
-    },
-    {
-      "id": "seo-112",
-      "title": "SEO Flipper: Add verifiable address to GTR + Brevard footers",
-      "category": "seo",
-      "status": "new",
-      "priority": "high",
-      "notes": "3682 N Wickham Rd, B1-271, Melbourne, FL 32935. Already on Cocoa. Real address = #1 local trust signal.",
+      "notes": "Uploaded Jul 16. Wait ~1 day, then request indexing in GSC for top 5 cities.",
       "order": 11,
-      "created": "2026-10-28",
-      "updated": "2026-10-28"
+      "created": "2026-07-16",
+      "updated": "2026-10-01"
     },
     {
-      "id": "seo-113",
-      "title": "SEO Flipper: Outreach to 5 divorce + 5 probate attorneys",
-      "category": "seo",
+      "id": "re-2",
+      "title": "Make 4 lead calls per day (10:30am\u201311:00am block)",
+      "category": "real-estate",
       "status": "new",
-      "priority": "medium",
-      "notes": "Referral funnel. Attorneys control motivated sellers. One meeting = deal flow for years.",
-      "order": 12,
-      "created": "2026-10-28",
-      "updated": "2026-10-28"
+      "priority": "high",
+      "notes": "Only direct revenue activity; proven $20K Jan result. Use GHL AI Voice for follow-ups.",
+      "order": 0,
+      "created": "2026-07-16",
+      "updated": "2026-08-29"
     },
     {
-      "id": "seo-114",
-      "title": "SEO Flipper: Seed 5 Q&As on GBP (both listings)",
-      "category": "seo",
+      "id": "re-5",
+      "title": "Launch quarterly REI Meetup \u2014 HML + networking",
+      "category": "real-estate",
       "status": "new",
+      "priority": "high",
+      "notes": "Leverage 30-member Meetup group. Quarterly meeting for hard money loan biz dev, local REI networking, and wholesaler connections. Increases network = increases net worth.",
+      "order": 1,
+      "created": "2026-07-20",
+      "updated": "2026-07-26"
+    },
+    {
+      "id": "pe-2",
+      "title": "Mulch",
+      "category": "personal",
+      "status": "new",
+      "priority": "low",
+      "notes": "Honey-do item. Add to Apple Notes for tracking.",
+      "order": 10,
+      "created": "2026-07-16",
+      "updated": "2026-10-21"
+    },
+    {
+      "id": "pe-3",
+      "title": "Add Apple Notes for honey-do items",
+      "category": "personal",
+      "status": "new",
+      "priority": "low",
+      "notes": "Track personal/home tasks in Apple Notes.",
+      "order": 11,
+      "created": "2026-07-20",
+      "updated": "2026-10-21"
+    },
+    {
+      "id": "seo-2",
+      "title": "Review SEO roundup and implement 1 tactic",
+      "category": "seo",
+      "status": "completed",
       "priority": "medium",
-      "notes": "'Do you buy houses in Melbourne?' 'How fast can you close?' Pre-populate with keyword-rich answers.",
+      "notes": "Roundup arrives Monday 4 AM.",
+      "order": 15,
+      "created": "2026-07-16",
+      "updated": "2026-10-01"
+    },
+    {
+      "id": "seo-3",
+      "title": "Request GSC indexing for top 5 city pages",
+      "category": "seo",
+      "status": "completed",
+      "priority": "high",
+      "notes": "Speeds up ranking.",
+      "order": 19,
+      "created": "2026-07-20",
+      "updated": "2026-10-01"
+    },
+    {
+      "id": "seo-4",
+      "title": "Validate schema markup on all city pages",
+      "category": "seo",
+      "status": "completed",
+      "priority": "high",
+      "notes": "Required for rich results.",
+      "order": 17,
+      "created": "2026-07-20",
+      "updated": "2026-10-01"
+    },
+    {
+      "id": "seo-5",
+      "title": "Add internal links between city pages",
+      "category": "seo",
+      "status": "completed",
+      "priority": "high",
+      "notes": "Boosts page authority and crawlability.",
+      "order": 20,
+      "created": "2026-07-20",
+      "updated": "2026-10-01"
+    },
+    {
+      "id": "seo-6",
+      "title": "Optimize homepage 'Areas We Serve' section",
+      "category": "seo",
+      "status": "completed",
+      "priority": "high",
+      "notes": "Distributes authority to city pages.",
+      "order": 21,
+      "created": "2026-07-20",
+      "updated": "2026-10-01"
+    },
+    {
+      "id": "seo-8",
+      "title": "Build backlinks from Brevard County directories",
+      "category": "seo",
+      "status": "completed",
+      "priority": "medium",
+      "notes": "Local ranking signal.",
       "order": 13,
-      "created": "2026-10-28",
-      "updated": "2026-10-28"
+      "created": "2026-07-20",
+      "updated": "2026-10-01"
     },
     {
-      "id": "ca-101",
-      "title": "W-2: Maintain 43-hour week + commission targets",
+      "id": "seo-9",
+      "title": "Monitor city page rankings in GSC weekly",
+      "category": "seo",
+      "status": "completed",
+      "priority": "medium",
+      "notes": "Double down on what's working.",
+      "order": 10,
+      "created": "2026-07-20",
+      "updated": "2026-10-01"
+    },
+    {
+      "id": "seo-10",
+      "title": "Write blog post: 'How to Sell Your House Fast in Melbourne, FL'",
+      "category": "seo",
+      "status": "completed",
+      "priority": "medium",
+      "notes": "Captures long-tail traffic.",
+      "order": 14,
+      "created": "2026-07-20",
+      "updated": "2026-10-01"
+    },
+    {
+      "id": "ca-1",
+      "title": "Request 85/15 commission split meeting",
+      "category": "career",
+      "status": "completed",
+      "priority": "high",
+      "notes": "Fastest W-2 income jump. Build evidence first.- agreed to 60/40",
+      "order": 2,
+      "created": "2026-07-20",
+      "updated": "2026-08-29"
+    },
+    {
+      "id": "ca-2",
+      "title": "Document pipeline management proof",
+      "category": "career",
+      "status": "completed",
+      "priority": "high",
+      "notes": "Build evidence before asking for split.",
+      "order": 1,
+      "created": "2026-07-20",
+      "updated": "2026-07-30"
+    },
+    {
+      "id": "ca-3",
+      "title": "Build LinkedIn outreach machine (AI)",
       "category": "career",
       "status": "in-progress",
       "priority": "high",
       "notes": "",
       "order": 0,
-      "created": "2026-10-28",
-      "updated": "2026-10-28"
+      "created": "2026-07-20",
+      "updated": "2026-10-16"
     },
     {
-      "id": "ca-102",
-      "title": "REI Meetup: Plan Q4 hard money networking event",
+      "id": "ca-4",
+      "title": "Donna \u2014 stump and fox tail quote from Christian",
+      "category": "career",
+      "status": "completed",
+      "priority": "medium",
+      "notes": "Schedule time/date for work.",
+      "order": 0,
+      "created": "2026-07-20",
+      "updated": "2026-07-29"
+    },
+    {
+      "id": "go-1",
+      "title": "\ud83d\udcaa Health: Wake up at 5:00 AM consistently",
+      "category": "goals",
+      "status": "new",
+      "priority": "medium",
+      "notes": "Foundation of sacred morning block.",
+      "order": 0,
+      "created": "2026-07-19",
+      "updated": "2026-07-20"
+    },
+    {
+      "id": "go-3",
+      "title": "\ud83d\udcaa Health: Exercise 3\u00d7 per week",
+      "category": "goals",
+      "status": "new",
+      "priority": "medium",
+      "notes": "Energy and focus for side hustle + family.",
+      "order": 2,
+      "created": "2026-07-19",
+      "updated": "2026-07-20"
+    },
+    {
+      "id": "go-4",
+      "title": "\ud83d\udc68\u200d\ud83d\udc69\u200d\ud83d\udc67 Family: Protect sacred morning block (7:00\u20138:00 AM & 5:00\u20138:00 PM)",
+      "category": "goals",
+      "status": "new",
+      "priority": "high",
+      "notes": "Boundaries protect family time later.",
+      "order": 3,
+      "created": "2026-07-19",
+      "updated": "2026-07-20"
+    },
+    {
+      "id": "go-5",
+      "title": "\ud83d\udc68\u200d\ud83d\udc69\u200d\ud83d\udc67 Family: Weekly family activity",
+      "category": "goals",
+      "status": "new",
+      "priority": "medium",
+      "notes": "Intentional family connection.",
+      "order": 4,
+      "created": "2026-07-19",
+      "updated": "2026-07-20"
+    },
+    {
+      "id": "go-6",
+      "title": "\ud83d\udcb0 Income: Close 1 wholesale deal this month",
+      "category": "goals",
+      "status": "new",
+      "priority": "high",
+      "notes": "Covers ~2.3 months of Stage 1 gap.",
+      "order": 5,
+      "created": "2026-07-19",
+      "updated": "2026-07-20"
+    },
+    {
+      "id": "go-8",
+      "title": "\ud83d\udcb0 Income: Validate SEO lead gen system",
+      "category": "goals",
+      "status": "new",
+      "priority": "medium",
+      "notes": "Proves inbound channel before scaling. Then landscaping and kitchen remodel.",
+      "order": 7,
+      "created": "2026-07-19",
+      "updated": "2026-07-20"
+    },
+    {
+      "id": "ro-1",
+      "title": "Deliver accurate morning brief by 5:05 AM",
+      "category": "rosey",
+      "status": "in-progress",
+      "priority": "high",
+      "notes": "Markets, sports, rates, weather. No delays.",
+      "order": 3,
+      "created": "2026-07-20",
+      "updated": "2026-07-20"
+    },
+    {
+      "id": "ro-2",
+      "title": "Run SEO research roundup every Monday 4 AM",
+      "category": "rosey",
+      "status": "in-progress",
+      "priority": "high",
+      "notes": "Neil Patel + Reddit ROI insights via sub-agents.",
+      "order": 5,
+      "created": "2026-07-20",
+      "updated": "2026-08-10"
+    },
+    {
+      "id": "ro-3",
+      "title": "Update martin-profile.md after every work session",
+      "category": "rosey",
+      "status": "in-progress",
+      "priority": "high",
+      "notes": "Prevent stale data. Profile is source of truth.",
+      "order": 2,
+      "created": "2026-07-20",
+      "updated": "2026-07-20"
+    },
+    {
+      "id": "ro-4",
+      "title": "Maintain memory offload when hitting 70% capacity",
+      "category": "rosey",
+      "status": "in-progress",
+      "priority": "medium",
+      "notes": "Keep injected memory lean to reduce token burn.",
+      "order": 1,
+      "created": "2026-07-20",
+      "updated": "2026-07-20"
+    },
+    {
+      "id": "ro-5",
+      "title": "Push MB updates via FTP within 5 min of request",
+      "category": "rosey",
+      "status": "in-progress",
+      "priority": "high",
+      "notes": "No cPanel uploads. Direct server sync only.",
+      "order": 0,
+      "created": "2026-07-20",
+      "updated": "2026-07-20"
+    },
+    {
+      "id": "ro-6",
+      "title": "Track and report daily token usage accurately",
+      "category": "rosey",
+      "status": "in-progress",
+      "priority": "medium",
+      "notes": "Use correct model pricing (k2.6 @ $0.95/$4.00).",
+      "order": 4,
+      "created": "2026-07-20",
+      "updated": "2026-07-20"
+    },
+    {
+      "id": "seo-11",
+      "title": "Request GSC indexing for Melbourne blog post",
+      "category": "seo",
+      "status": "completed",
+      "priority": "high",
+      "notes": "URL: https://sellmyhousefastbrevardfl.com/blog/sell-house-fast-melbourne-fl - Submit for indexing in Google Search Console",
+      "order": 22,
+      "created": "2026-07-20",
+      "updated": "2026-10-01"
+    },
+    {
+      "id": "seo-12",
+      "title": "Provide Rosey access to Google Search Console",
+      "category": "seo",
+      "status": "completed",
+      "priority": "high",
+      "notes": "Add mb-editor@goldenticketrealty.com as user in GSC so Rosey can submit URLs for indexing directly.",
+      "order": 12,
+      "created": "2026-07-20",
+      "updated": "2026-10-01"
+    },
+    {
+      "id": "seo-13",
+      "title": "Find Reddit API workaround or alternative research source",
+      "category": "seo",
+      "status": "stuck",
+      "priority": "high",
+      "notes": "Reddit app registration blocked (no CLIENT_ID). Alternatives: X/Twitter threads, direct forum read, LinkedIn SEO posts, YouTube channels. This is blocking SEOFlipper community research pipeline.",
+      "order": 0,
+      "created": "2026-07-28",
+      "updated": "2026-09-30"
+    },
+    {
+      "id": "seo-14",
+      "title": "Add photos to both sites (before/after + Brevard landmarks)",
+      "status": "completed",
+      "priority": "high",
+      "category": "seo",
+      "notes": "PHOTO REQUIREMENTS SAVED: ~/.hermes/research/seo/website-photo-requirements.md",
+      "order": 6,
+      "updated": "2026-10-01"
+    },
+    {
+      "id": "seo-15",
+      "title": "Update GHL tracking phone number per site (Brevard vs Cocoa)",
+      "category": "seo",
+      "status": "completed",
+      "priority": "high",
+      "notes": "Brevard: 321-342-2514 | Cocoa: 321-701-2315. Update GHL to route calls to correct site/tracking.",
+      "order": 18,
+      "created": "2026-08-08",
+      "updated": "2026-10-01"
+    },
+    {
+      "id": "seo-16",
+      "title": "set up GHL ph # to have AI answer",
+      "category": "seo",
+      "status": "completed",
+      "priority": "medium",
+      "notes": "",
+      "order": 8,
+      "created": "2026-08-08",
+      "updated": "2026-10-01"
+    },
+    {
+      "id": "pe-4",
+      "title": "Gutter clean",
+      "category": "personal",
+      "status": "new",
+      "priority": "medium",
+      "notes": "From honey-do list",
+      "order": 6,
+      "created": "2026-08-08",
+      "updated": "2026-10-21"
+    },
+    {
+      "id": "pe-5",
+      "title": "Gutter diverter",
+      "category": "personal",
+      "status": "new",
+      "priority": "medium",
+      "notes": "From honey-do list",
+      "order": 7,
+      "created": "2026-08-08",
+      "updated": "2026-10-21"
+    },
+    {
+      "id": "pe-6",
+      "title": "Rearrange rain barrels",
+      "category": "personal",
+      "status": "new",
+      "priority": "medium",
+      "notes": "From honey-do list",
+      "order": 8,
+      "created": "2026-08-08",
+      "updated": "2026-10-21"
+    },
+    {
+      "id": "pe-7",
+      "title": "Pressure wash house",
+      "category": "personal",
+      "status": "new",
+      "priority": "medium",
+      "notes": "From honey-do list",
+      "order": 9,
+      "created": "2026-08-08",
+      "updated": "2026-10-21"
+    },
+    {
+      "id": "pe-8",
+      "title": "Set up bike for family bike ride",
+      "category": "personal",
+      "status": "new",
+      "priority": "high",
+      "notes": "From honey-do list",
+      "order": 0,
+      "created": "2026-08-08",
+      "updated": "2026-10-21"
+    },
+    {
+      "id": "pe-9",
+      "title": "Reinstall towel bar",
+      "category": "personal",
+      "status": "completed",
+      "priority": "medium",
+      "notes": "From honey-do list",
+      "order": 0,
+      "created": "2026-08-09",
+      "updated": "2026-10-14"
+    },
+    {
+      "id": "pe-10",
+      "title": "Reinstall TP holder",
+      "category": "personal",
+      "status": "completed",
+      "priority": "medium",
+      "notes": "From honey-do list",
+      "order": 1,
+      "created": "2026-08-09",
+      "updated": "2026-10-14"
+    },
+    {
+      "id": "pe-11",
+      "title": "Clean car seat",
+      "category": "personal",
+      "status": "completed",
+      "priority": "medium",
+      "notes": "From honey-do list",
+      "order": 2,
+      "created": "2026-08-09",
+      "updated": "2026-10-14"
+    },
+    {
+      "id": "go-20deal",
+      "title": "\ud83d\udcb0 Income: Close 20 wholesale deals in 3 years ($300K net @ $15K avg)",
+      "category": "goals",
+      "status": "new",
+      "priority": "high",
+      "notes": "SEO + sales funnel driven. 50 warm leads = manual follow-up (12/week). 150 cold leads = AI voice outbound. Track monthly deal count and avg assignment fee.",
+      "order": 99,
+      "created": "2026-08-12",
+      "updated": "2026-08-12"
+    },
+    {
+      "id": "re-warmcalls",
+      "title": "Call 50 warm leads: 12/week (4/day x 3 days)",
+      "category": "real-estate",
+      "status": "in-progress",
+      "priority": "high",
+      "notes": "Last 90 days interest. Goal: re-engage, qualify, set appointment. Use GHL to track touchpoints.",
+      "order": 0,
+      "created": "2026-08-12",
+      "updated": "2026-10-14"
+    },
+    {
+      "id": "re-aicalls",
+      "title": "Set up AI voice outbound for 150 cold leads in GHL",
+      "category": "real-estate",
+      "status": "completed",
+      "priority": "high",
+      "notes": "GHL AI Voice outbound campaign. Script: quick qualification + appointment setting. Segment by lead source/age.",
+      "order": 1,
+      "created": "2026-08-12",
+      "updated": "2026-10-14"
+    },
+    {
+      "id": "re-forms",
+      "title": "Audit + fix lead forms on both sites (404 on /contact)",
+      "category": "real-estate",
+      "status": "completed",
+      "priority": "high",
+      "notes": "Brevard and Cocoa /contact both return 404. Verify form submission endpoints, confirmation messages, and GHL webhook routing.",
+      "order": 0,
+      "created": "2026-08-12",
+      "updated": "2026-10-14"
+    },
+    {
+      "id": "seo-17",
+      "title": "GHL lead form x3 sites",
+      "category": "seo",
+      "status": "in-progress",
+      "priority": "high",
+      "notes": "mkae sure these are set up correctly and the workflow after lead",
+      "order": 1,
+      "created": "2026-08-13",
+      "updated": "2026-10-16"
+    },
+    {
+      "id": "seo-18",
+      "title": "A2P app and approval",
+      "category": "seo",
+      "status": "completed",
+      "priority": "high",
+      "notes": "A2P phone number set up for brevard and cocoa sites",
+      "order": 9,
+      "created": "2026-08-23",
+      "updated": "2026-10-01"
+    },
+    {
+      "id": "re-6",
+      "title": "IG model for builders",
+      "category": "career",
+      "status": "new",
+      "priority": "high",
+      "notes": "Build IG prospect model for builders",
+      "order": 5,
+      "created": "2026-08-29",
+      "updated": "2026-08-29"
+    },
+    {
+      "id": "seo-19",
+      "title": "website audits / screaming frog",
+      "category": "seo",
+      "status": "completed",
+      "priority": "high",
+      "notes": "need to pick up traffic, make sure blogs are on schdeule... etc",
+      "order": 7,
+      "created": "2026-09-04",
+      "updated": "2026-10-01"
+    },
+    {
+      "id": "seo-20",
+      "title": "Back links research and install",
+      "category": "seo",
+      "status": "completed",
+      "priority": "medium",
+      "notes": "",
+      "order": 5,
+      "created": "2026-09-15",
+      "updated": "2026-10-01"
+    },
+    {
+      "id": "seo-21",
+      "title": "GTR site speed, check all sites",
+      "category": "seo",
+      "status": "completed",
+      "priority": "medium",
+      "notes": "",
+      "order": 16,
+      "created": "2026-09-18",
+      "updated": "2026-10-01"
+    },
+    {
+      "id": "seo-22",
+      "title": "Phase 0 - Cross-link 3 owned sites (GTR <-> Brevard <-> Cocoa), branded anchors only, no keyword anchors, no closed ABC triangle",
+      "category": "seo",
+      "status": "completed",
+      "priority": "high",
+      "notes": "GTR Elementor footer links out to both niche sites (branded anchors, one line). Sitewide rollout complete 9/28: white branded footer line on all 68 brevard content pages. Live. Backups: ~/crosslink-review/brevard-site + elementor-footer-33-backup.json",
+      "order": 0,
+      "created": "2026-09-19",
+      "updated": "2026-10-01",
+      "completed_at": "2026-09-28"
+    },
+    {
+      "id": "seo-23",
+      "title": "Phase 0 - Create LinkedIn Company Page for Golden Ticket Realty with website link to goldenticketrealty.com",
+      "category": "seo",
+      "status": "completed",
+      "priority": "high",
+      "notes": "Phase 0: linkedin.com/company page. Also add site link to personal LinkedIn profile Featured section.",
+      "order": 4,
+      "created": "2026-09-19",
+      "updated": "2026-10-01"
+    },
+    {
+      "id": "seo-24",
+      "title": "Phase 0 - Claim Facebook Business Page, Bing Places, Apple Business Connect for Golden Ticket Realty",
+      "category": "seo",
+      "status": "completed",
+      "priority": "high",
+      "notes": "Phase 0: free citations/profiles. NAP must match GMB exactly.",
+      "order": 2,
+      "created": "2026-09-19",
+      "updated": "2026-10-01"
+    },
+    {
+      "id": "seo-25",
+      "title": "Phase 1 - Create Crunchbase company profile for Golden Ticket Realty (free DR~92 backlink)",
+      "category": "seo",
+      "status": "completed",
+      "priority": "high",
+      "notes": "Profile content drafted 9/28 in ~/crunchbase-profile-draft.md. BLOCKED: needs Martin personal Crunchbase/LinkedIn login to create+claim (~10 min).",
+      "order": 3,
+      "created": "2026-09-19",
+      "updated": "2026-10-01"
+    },
+    {
+      "id": "seo-26",
+      "title": "Phase 1 - Claim free citations pointing to sellmyhousefastbrevardfl.com: Yelp, Nextdoor, Foursquare, MapQuest, Hotfrog, Manta, EZlocal, Brownbook, Cylex, Angi, Thumbtack",
+      "category": "seo",
+      "status": "new",
+      "priority": "high",
+      "notes": "Phase 1: knock out 2-3 per day. Same NAP everywhere. See weekly-kpi-tracker.md backlink tracker.",
+      "order": 1,
+      "created": "2026-09-19",
+      "updated": "2026-09-30"
+    },
+    {
+      "id": "seo-27",
+      "title": "Phase 1 - Claim free BBB profile for Golden Ticket Realty (citation now; paid accreditation = dofollow link, decide later)",
+      "category": "seo",
+      "status": "completed",
+      "priority": "high",
+      "notes": "Phase 1: bbb.org free listing = trust/citation only, no link. Accreditation ~$400-1200/yr adds the dofollow link.",
+      "order": 1,
+      "created": "2026-09-19",
+      "updated": "2026-10-01"
+    },
+    {
+      "id": "seo-28",
+      "title": "Phase 1 - Sign up for free journalist query digests: HARO (Featured.com), Qwoted, Source of Sources",
+      "category": "seo",
+      "status": "in-progress",
+      "priority": "high",
+      "notes": "Phase 1: reply fast (within the hour) to real estate/foreclosure/home-selling queries. 5-15% pickup = free editorial backlinks + AI citation mentions.",
+      "order": 2,
+      "created": "2026-09-19",
+      "updated": "2026-10-16"
+    },
+    {
+      "id": "pe-12",
+      "title": "Laundry install and organize",
+      "category": "personal",
+      "status": "completed",
+      "priority": "medium",
+      "notes": "From honey-do list",
+      "order": 3,
+      "created": "2026-10-11",
+      "updated": "2026-10-14"
+    },
+    {
+      "id": "pe-13",
+      "title": "Bike fix and setup",
+      "category": "personal",
+      "status": "in-progress",
+      "priority": "medium",
+      "notes": "From honey-do list",
+      "order": 0,
+      "created": "2026-10-11",
+      "updated": "2026-10-21"
+    },
+    {
+      "id": "pe-14",
+      "title": "Rain gutter diverter",
+      "category": "personal",
+      "status": "new",
+      "priority": "medium",
+      "notes": "From honey-do list",
+      "order": 2,
+      "created": "2026-10-11",
+      "updated": "2026-10-21"
+    },
+    {
+      "id": "pe-15",
+      "title": "Flatten rocks and organize barrels",
+      "category": "personal",
+      "status": "new",
+      "priority": "medium",
+      "notes": "From honey-do list",
+      "order": 3,
+      "created": "2026-10-11",
+      "updated": "2026-10-21"
+    },
+    {
+      "id": "pe-16",
+      "title": "Meal prep",
+      "category": "personal",
+      "status": "new",
+      "priority": "medium",
+      "notes": "From honey-do list",
+      "order": 4,
+      "created": "2026-10-11",
+      "updated": "2026-10-21"
+    },
+    {
+      "id": "pe-17",
+      "title": "Landscaping fun",
+      "category": "personal",
+      "status": "completed",
+      "priority": "medium",
+      "notes": "From honey-do list",
+      "order": 4,
+      "created": "2026-10-11",
+      "updated": "2026-10-14"
+    },
+    {
+      "id": "pe-18",
+      "title": "Garage",
+      "category": "personal",
+      "status": "new",
+      "priority": "medium",
+      "notes": "From honey-do list",
+      "order": 5,
+      "created": "2026-10-11",
+      "updated": "2026-10-21"
+    },
+    {
+      "id": "ca-5",
+      "title": "phone dialer",
       "category": "career",
       "status": "new",
       "priority": "medium",
-      "notes": "Leverage 30-member Meetup group. Quarterly HML + wholesaler connections.",
-      "order": 1,
-      "created": "2026-10-28",
-      "updated": "2026-10-28"
+      "notes": "mojo dialer for the emerging broker leads",
+      "order": 6,
+      "created": "2026-10-16",
+      "updated": "2026-10-16"
     },
     {
-      "id": "pe-101",
-      "title": "Mulch",
-      "category": "personal",
-      "status": "new",
-      "priority": "low",
-      "notes": "Honey-do item.",
+      "id": "seo-29",
+      "title": "Follow SEO flipper steps",
+      "category": "seo",
+      "status": "in-progress",
+      "priority": "high",
+      "notes": "",
       "order": 0,
-      "created": "2026-10-28",
-      "updated": "2026-10-28"
+      "created": "2026-10-16",
+      "updated": "2026-10-16"
     },
     {
-      "id": "pe-102",
-      "title": "Schedule Charlotte landscape follow-up (if still open)",
-      "category": "personal",
-      "status": "new",
-      "priority": "low",
-      "notes": "Cristian connect.",
-      "order": 1,
-      "created": "2026-10-28",
-      "updated": "2026-10-28"
-    },
-    {
-      "id": "go-101",
-      "title": "\ud83d\udcaa Health: Wake 5:15 AM Mon\u2013Thu, 6:30 AM Fri",
-      "category": "goals",
-      "status": "in-progress",
-      "priority": "high",
-      "notes": "Foundation of sacred morning block. Gym Mon/Tue/Thu 5:15 AM.",
-      "order": 0,
-      "created": "2026-10-28",
-      "updated": "2026-10-28"
-    },
-    {
-      "id": "go-102",
-      "title": "\ud83d\udcaa Health: Wind down by 9:00 PM, asleep by 9:30 PM",
-      "category": "goals",
+      "id": "ssl-update-70",
+      "title": "Update SSL certificates across all sites",
+      "category": "seo",
       "status": "new",
       "priority": "high",
-      "notes": "Makes 5:15 AM sustainable.",
-      "order": 1,
-      "created": "2026-10-28",
-      "updated": "2026-10-28"
+      "notes": "Check and renew SSL for goldenticketrealty.com, sellmyhousefastbrevardfl.com, sellmyhousefastcocoa.com. Ensure auto-renewal is active.",
+      "order": 70
     },
     {
-      "id": "go-103",
-      "title": "\ud83d\udc68\u200d\ud83d\udc69\u200d\ud83d\udc67 Family: Protect sacred blocks (7\u20138 AM breakfast, 5\u20138 PM evening)",
-      "category": "goals",
-      "status": "in-progress",
-      "priority": "high",
-      "notes": "Boundaries protect family time.",
-      "order": 2,
-      "created": "2026-10-28",
-      "updated": "2026-10-28"
-    },
-    {
-      "id": "go-104",
-      "title": "\ud83d\udcb0 Income: Close 20 wholesale deals in 3 years ($300K net @ $15K avg)",
-      "category": "goals",
-      "status": "in-progress",
-      "priority": "high",
-      "notes": "SEO + sales funnel driven. 50 warm leads = manual follow-up (12/week). 150 cold leads = AI voice outbound. Track monthly deal count and avg assignment fee.",
-      "order": 3,
-      "created": "2026-10-28",
-      "updated": "2026-10-28"
-    },
-    {
-      "id": "go-105",
-      "title": "\ud83d\udcb0 Income: Hit $100K annual goal (track via MB KPI)",
-      "category": "goals",
-      "status": "in-progress",
-      "priority": "high",
-      "notes": "Yearly progress bar live on Schedule tab. Review monthly.",
-      "order": 4,
-      "created": "2026-10-28",
-      "updated": "2026-10-28"
-    },
-    {
-      "id": "go-106",
-      "title": "\ud83d\udcb0 Income: Close 1 wholesale deal in Q4 2026",
-      "category": "goals",
+      "id": "gmb-restore-test-71",
+      "title": "\ud83d\udce2 GMB Restore Test Tonight",
+      "category": "real-estate",
       "status": "new",
       "priority": "high",
-      "notes": "Direct revenue. 3 lead calls/day target + warm lead blitz.",
-      "order": 5,
-      "created": "2026-10-28",
-      "updated": "2026-10-28"
+      "notes": "Test manual GBP post tonight (Oct 23). Safe topic only (inherited/PCS/general cash). If works: resume cron job (dacded492c7e), re-arm poster daemon, delete PAUSE_POSTING flag. If blocked: wait another week.",
+      "order": 71
     },
     {
-      "id": "ro-101",
-      "title": "Deliver accurate morning brief by 5:05 AM",
-      "category": "rosey",
+      "id": "ca-6",
+      "title": "Text pool guy \u2014 schedule 30-min diagnostic call (Launchpad AI)",
+      "category": "career",
       "status": "new",
       "priority": "high",
-      "notes": "Markets, sports, rates, weather. No delays.",
-      "order": 0,
-      "created": "2026-10-28",
-      "updated": "2026-10-28"
+      "notes": "Consultative approach: audit 6 departments, prescribe gaps, offer free first automation. Framework: ~/space-coast-ai/",
+      "order": 7,
+      "created": "2026-10-24",
+      "updated": "2026-10-24"
     },
     {
-      "id": "ro-102",
-      "title": "Maintain martin-profile.md after every work session",
-      "category": "rosey",
+      "id": "ca-7",
+      "title": "Text HVAC guy \u2014 schedule 30-min diagnostic call (Launchpad AI)",
+      "category": "career",
       "status": "new",
       "priority": "high",
-      "notes": "Prevent stale data. Profile is source of truth.",
-      "order": 1,
-      "created": "2026-10-28",
-      "updated": "2026-10-28"
+      "notes": "Same framework; focus on missed emergency calls (high $ impact). Framework: ~/space-coast-ai/",
+      "order": 8,
+      "created": "2026-10-24",
+      "updated": "2026-10-24"
     },
     {
-      "id": "ro-103",
-      "title": "Push MB updates via FTP within 5 min of request",
-      "category": "rosey",
-      "status": "new",
-      "priority": "high",
-      "notes": "Direct server sync only.",
-      "order": 2,
-      "created": "2026-10-28",
-      "updated": "2026-10-28"
-    },
-    {
-      "id": "ro-104",
-      "title": "Track and report daily token usage accurately",
-      "category": "rosey",
+      "id": "seo-30",
+      "title": "Hire local Brevard photographer/videographer for b-roll + before/after photos",
+      "category": "seo",
       "status": "new",
       "priority": "medium",
-      "notes": "Use correct model pricing (k2.6 @ $0.95/$4.00).",
+      "notes": "Landmarks, no audio needed, 2hr shoot, budget $100-150. Use footage for homepage, our-deals, city pages.",
+      "order": 30,
+      "created": "2026-10-24",
+      "updated": "2026-10-24"
+    },
+    {
+      "id": "seo-31",
+      "title": "Record voiceover scripts for 3 videos (homepage, our-deals, city pages) \u2014 30sec each",
+      "category": "seo",
+      "status": "new",
+      "priority": "medium",
+      "notes": "After b-roll shoot is scheduled. Keep under 30 seconds per video.",
+      "order": 31,
+      "created": "2026-10-24",
+      "updated": "2026-10-24"
+    },
+    {
+      "id": "seo-32",
+      "title": "Edit b-roll + voiceover in CapCut \u2014 3 videos with text overlays & city names",
+      "category": "seo",
+      "status": "new",
+      "priority": "medium",
+      "notes": "After voiceover recorded. Export for YouTube + site embed.",
+      "order": 32,
+      "created": "2026-10-24",
+      "updated": "2026-10-24"
+    },
+    {
+      "id": "seo-34",
+      "title": "Embed YouTube videos on Brevard homepage + /our-deals/ + top 3 city pages",
+      "category": "seo",
+      "status": "new",
+      "priority": "medium",
+      "notes": "After YouTube upload. Improves dwell time and conversion.",
+      "order": 34,
+      "created": "2026-10-24",
+      "updated": "2026-10-24"
+    },
+    {
+      "id": "seo-35",
+      "title": "out projects tab compeltion (desktop and moblie)",
+      "category": "seo",
+      "status": "in-progress",
+      "priority": "high",
+      "notes": "",
       "order": 3,
-      "created": "2026-10-28",
-      "updated": "2026-10-28"
+      "created": "2026-10-27",
+      "updated": "2026-10-27"
     }
   ],
   "income": {
     "enabled": true,
     "monthlyTarget": 10000,
+    "annualGoal": 100000,
     "entries": [
       {
         "date": "2026-01-30",
-        "amount": 20000.0,
+        "amount": 20000,
         "source": "Wholesale deal #1"
       },
       {
@@ -453,7 +879,7 @@
       },
       {
         "date": "2026-05-30",
-        "amount": 900.0,
+        "amount": 900,
         "source": "Pavers job"
       },
       {
@@ -484,11 +910,11 @@
       {
         "date": "2026-07-31",
         "amount": 2647.91,
-        "source": "3rd check for July (W2)"
+        "source": "3rd check for July (w2)"
       },
       {
         "date": "2026-08-13",
-        "amount": 1000.0,
+        "amount": 1000,
         "source": "Options net profit withdraw"
       },
       {
@@ -497,7 +923,7 @@
         "source": "Paycheck 1 - Aug"
       },
       {
-        "date": "2026-08-28",
+        "date": "2026-08-23",
         "amount": 2592.54,
         "source": "Paycheck 2 - Aug"
       },
@@ -512,163 +938,10 @@
         "source": "Paycheck 2 - Sep"
       },
       {
-        "date": "2026-10-09",
-        "amount": 2594.83,
-        "source": "Paycheck 1 - Oct"
-      },
-      {
-        "date": "2026-10-23",
-        "amount": 3108.15,
-        "source": "Paycheck 2 - Oct"
-      },
-      {
-        "date": "2026-10-23",
-        "amount": 1171.41,
-        "source": "Paycheck 2 - Oct BONUS"
-      },
-      {
-        "date": "2026-07-31",
-        "amount": 2647.91,
-        "source": "3rd check for July (w2)"
+        "date": "2026-09-27",
+        "amount": 600,
+        "source": "Charlotte landscape"
       }
-    ],
-    "annualGoal": 100000
-  },
-  "yearlyKpi": {
-    "annualGoal": 100000,
-    "currentTotal": 60134.8,
-    "progressPercent": 60.1,
-    "months": {
-      "2026-01": {
-        "total": 20000.0,
-        "entries": [
-          {
-            "date": "2026-01-30",
-            "amount": 20000.0,
-            "source": "Wholesale deal #1"
-          }
-        ]
-      },
-      "2026-05": {
-        "total": 4967.76,
-        "entries": [
-          {
-            "date": "2026-05-08",
-            "amount": 1995.13,
-            "source": "Paycheck 1 - May"
-          },
-          {
-            "date": "2026-05-22",
-            "amount": 2072.63,
-            "source": "Paycheck 2 - May"
-          },
-          {
-            "date": "2026-05-30",
-            "amount": 900.0,
-            "source": "Pavers job"
-          }
-        ]
-      },
-      "2026-06": {
-        "total": 4367.92,
-        "entries": [
-          {
-            "date": "2026-06-05",
-            "amount": 2063.08,
-            "source": "Paycheck 1 - June"
-          },
-          {
-            "date": "2026-06-18",
-            "amount": 2304.84,
-            "source": "Paycheck 2 - June"
-          }
-        ]
-      },
-      "2026-07": {
-        "total": 10836.029999999999,
-        "entries": [
-          {
-            "date": "2026-07-02",
-            "amount": 2481.86,
-            "source": "Paycheck 1 - July"
-          },
-          {
-            "date": "2026-07-16",
-            "amount": 2648.77,
-            "source": "Paycheck 2 - July"
-          },
-          {
-            "date": "2026-07-17",
-            "amount": 409.58,
-            "source": "Q2 KPI"
-          },
-          {
-            "date": "2026-07-31",
-            "amount": 2647.91,
-            "source": "3rd check for July (W2)"
-          },
-          {
-            "date": "2026-07-31",
-            "amount": 2647.91,
-            "source": "3rd check for July (w2)"
-          }
-        ]
-      },
-      "2026-08": {
-        "total": 7885.87,
-        "entries": [
-          {
-            "date": "2026-08-13",
-            "amount": 1000.0,
-            "source": "Options net profit withdraw"
-          },
-          {
-            "date": "2026-08-14",
-            "amount": 4293.33,
-            "source": "Paycheck 1 - Aug"
-          },
-          {
-            "date": "2026-08-28",
-            "amount": 2592.54,
-            "source": "Paycheck 2 - Aug"
-          }
-        ]
-      },
-      "2026-09": {
-        "total": 5202.83,
-        "entries": [
-          {
-            "date": "2026-09-11",
-            "amount": 2183.3,
-            "source": "Paycheck 1 - Sep"
-          },
-          {
-            "date": "2026-09-25",
-            "amount": 3019.53,
-            "source": "Paycheck 2 - Sep"
-          }
-        ]
-      },
-      "2026-10": {
-        "total": 6874.389999999999,
-        "entries": [
-          {
-            "date": "2026-10-09",
-            "amount": 2594.83,
-            "source": "Paycheck 1 - Oct"
-          },
-          {
-            "date": "2026-10-23",
-            "amount": 3108.15,
-            "source": "Paycheck 2 - Oct"
-          },
-          {
-            "date": "2026-10-23",
-            "amount": 1171.41,
-            "source": "Paycheck 2 - Oct BONUS"
-          }
-        ]
-      }
-    }
+    ]
   }
 }
