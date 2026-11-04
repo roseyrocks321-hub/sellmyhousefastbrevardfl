@@ -19,6 +19,10 @@ RewriteRule ^index\.html$ / [R=301,L]
 RewriteCond %{THE_REQUEST} \s/([^.]+)\.html\s [NC]
 RewriteRule ^ /%1 [R=301,L]
 
+# Redirect trailing slashes to no-slash (clean URLs)
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)/$ /$1 [R=301,L]
+
 # 4. Internal Rewrite: Serve the .html file behind the scenes
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
